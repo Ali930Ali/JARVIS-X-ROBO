@@ -78,54 +78,52 @@ def get_readable_time(seconds: int) -> str:
 # <============================================== STRINGS =========================================================>
 
 PM_START_TEX = """
-ʜᴇʟʟᴏ `{}`, ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ \nᴡᴀɪᴛ ᴀ ᴍᴏᴍᴇɴᴛ ʙʀᴏ . . . 
+merhaba `{}`, nasılsın \n biraz beklermisin kardeşim. . . 
 """
 
 
 PM_START_TEXT = """ 
 *ʜᴇʏ* {}  
 
-*๏ ᴛʜɪs ɪs* {} !
-➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ  ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
+* > ben * {} !
+telegramın en kaliteli grup Yönetim botuyum☺️.
 ─────────────────
-   *➻ ᴜsᴇʀs »* {}
-   *➻ ᴄʜᴀᴛs »* {}
+   * kullanıcı »* {}
+   * gruplar »* {}
 ─────────────────
-*๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
+* yardım komutları ve destek için aşağıdaki butonları tıklaya bilirsiniz.*
 """
 
 buttons = [
    [
         InlineKeyboardButton(
-            text="✧ ᴀᴅᴅ ᴍᴇ ✧",
+            text="♻️beni grubuna ekle♻️",
             url=f"https://t.me/{dispatcher.bot.username}?startgroup=true",
         ),
     ],
    [
-        InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
+        InlineKeyboardButton(text=🍃 "komutlar 🍃", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="❄ ᴀʙᴏᴜᴛ ❄", callback_data="Jarvis_"),
-        InlineKeyboardButton(text="✨ sᴜᴩᴩᴏʀᴛ ✨", url=f"https://t.me/JARVIS_V_SUPPORT"),
+        InlineKeyboardButton(text=" 🍃detaylar🍃 ", callback_data="Jarvis_"),
+        InlineKeyboardButton(text="✨ destej ✨", url=f"https://t.me/JARVIS_V_SUPPORT"),
     ],
    [
-        InlineKeyboardButton(text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="☁️ sᴏᴜʀᴄᴇ ☁️", callback_data="source_"),
+        InlineKeyboardButton(text="🥀 geliştirici 🥀", url=f"tg://user?id={OWNER_ID}"),
+        InlineKeyboardButton(text="☁️ kaynak kod ☁️", callback_data="source_"),
     ],
 ]
 
 HELP_STRINGS = f"""
-» {BOT_NAME}  ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ ᴀʙᴏᴜᴛ sᴘᴇᴄɪғɪᴄs ᴄᴏᴍᴍᴀɴᴅ"""
+» {BOT_NAME}  Belirli komut hakkında açıklama almak için aşağıdaki düğmeye tıklayın"""
 
 
 # <============================================================= NO USE BEGIN ========================================================================>
-DONATE_STRING = f"""ʜᴇʏ ʙᴀʙʏ,
-  ʜᴀᴩᴩʏ ᴛᴏ ʜᴇᴀʀ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴅᴏɴᴀᴛᴇ.
+DONATE_STRING = f"""merhaba bebeğim,
+  Bağış yapmak istediğini duyduğuma sevindim.
 
-ʏᴏᴜ ᴄᴀɴ ᴅɪʀᴇᴄᴛʟʏ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ @JARVIS\_V2 ғᴏʀ ᴅᴏɴᴀᴛɪɴɢ ᴏʀ ʏᴏᴜ ᴄᴀɴ ᴠɪsɪᴛ ᴍʏ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ @Chatting\_2024 ᴀɴᴅ ᴀsᴋ ᴛʜᴇʀᴇ ᴀʙᴏᴜᴛ ᴅᴏɴᴀᴛɪᴏɴ."""
+deceloper'ımla doğrudan iletişime geçebilirsiniz @Mehmettbeydiyeceksinizz\_V2 bağış yapmak için veya destek sohbetimi ziyaret edebilirsiniz @Armageddonsohbet\_2024 ve bağış konusunda aşk var."""
 # <============================================================= NO USE END ========================================================================>
-
-
 # <============================================== STRINGS END =========================================================>
 
 IMPORTED = {}
@@ -186,7 +184,7 @@ def send_help(chat_id, text, keyboard=None):
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=keyboard,
     )
-# <============================================== START =========================================================>
+# <============================================== BAŞLADI =========================================================>
 
 def start(update: Update, context: CallbackContext):
     args = context.args
@@ -204,7 +202,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="๏ ʙᴀᴄᴋ ๏", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="🍃 geri 🍃", callback_data="help_back")]]
                     ),
                 )
             elif args[0].lower() == "markdownhelp":
@@ -231,9 +229,9 @@ def start(update: Update, context: CallbackContext):
                 PM_START_TEX.format(usr.first_name), parse_mode=ParseMode.MARKDOWN
             )
             time.sleep(1.25)
-            lol.edit_text("💻")
+            lol.edit_text("⚰️")
             time.sleep(1.0)
-            lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ... ")
+            lol.edit_text("bot başlatılıyor... ")
             time.sleep(0.5)
             lol.delete()
             
@@ -245,7 +243,7 @@ def start(update: Update, context: CallbackContext):
     else:
         update.effective_message.reply_photo(
             START_IMG,
-            caption="ɪ ᴀᴍ ᴀʟɪᴠᴇ ʙᴀʙʏ  !\n<b>ɪ ᴅɪᴅɴ'ᴛ sʟᴇᴘᴛ sɪɴᴄᴇ​:</b> <code>{}</code>".format(
+            caption="hayattayım bebeğim !\n<b>o zamandan beri uyumadım🥺​:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -325,7 +323,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "» *ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs ꜰᴏʀ​​* *{}* :\n".format(
+                "» *için mevcut komutlar​​* *{}* :\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -335,7 +333,7 @@ def help_button(update, context):
                 
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help_back")]
+                        [InlineKeyboardButton(text="🍃geri🍃", callback_data="help_back")]
                     ]
                 ),
             )
@@ -381,62 +379,62 @@ def Jarvis_about_callback(update: Update, context: CallbackContext):
     if query.data == "Jarvis_":
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_caption(
-            f"ʜᴇʏ,*🥀\n  *ᴛʜɪs ɪs {dispatcher.bot.first_name}"
-            "\nᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴜɪʟᴛ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀꜱɪʟʏ ᴀɴᴅ ᴛᴏ ᴘʀᴏᴛᴇᴄᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ꜰʀᴏᴍ ꜱᴄᴀᴍᴍᴇʀꜱ ᴀɴᴅ ꜱᴘᴀᴍᴍᴇʀꜱ."
-            "\nᴡʀɪᴛᴛᴇɴ ɪɴ ᴩʏᴛʜᴏɴ ᴡɪᴛʜ sǫʟᴀʟᴄʜᴇᴍʏ ᴀɴᴅ ᴍᴏɴɢᴏᴅʙ ᴀs ᴅᴀᴛᴀʙᴀsᴇ."
+            f"merhaba,*🥀\n  *ben {dispatcher.bot.first_name}"
+            "\nGrubunuzu kolayca yönetmenize ve grubunuzu dolandırıcılardan ve spam gönderenlerden korumanıza yardımcı olmak için oluşturulmuş güçlü bir grup yönetimi."
+            "\nveritabanı olarak sqlalchemy ve mongodb ile python ile yazılmıştır."
             "\n\n────────────────────"
-            f"\n*➻ ᴜᴩᴛɪᴍᴇ »* {uptime}"
-            f"\n*➻ ᴜsᴇʀs »* {sql.num_users()}"
-            f"\n*➻ ᴄʜᴀᴛs »* {sql.num_chats()}"
+            f"\n*versiyon 1 »* {uptime}"
+            f"\n*versiyon 2 »* {sql.num_users()}"
+            f"\n*versiyon 3 »* {sql.num_chats()}"
             "\n────────────────────"
-            "\n\n➲  ɪ ᴄᴀɴ ʀᴇꜱᴛʀɪᴄᴛ ᴜꜱᴇʀꜱ."
-            "\n➲  ɪ ʜᴀᴠᴇ ᴀɴ ᴀᴅᴠᴀɴᴄᴇᴅ ᴀɴᴛɪ-ꜰʟᴏᴏᴅ ꜱʏꜱᴛᴇᴍ."
-            "\n➲  ɪ ᴄᴀɴ ɢʀᴇᴇᴛ ᴜꜱᴇʀꜱ ᴡɪᴛʜ ᴄᴜꜱᴛᴏᴍɪᴢᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇꜱ ᴀɴᴅ ᴇᴠᴇɴ ꜱᴇᴛ ᴀ ɢʀᴏᴜᴘ'ꜱ ʀᴜʟᴇꜱ."
-            "\n➲  ɪ ᴄᴀɴ ᴡᴀʀɴ ᴜꜱᴇʀꜱ ᴜɴᴛɪʟ ᴛʜᴇʏ ʀᴇᴀᴄʜ ᴍᴀx ᴡᴀʀɴꜱ, ᴡɪᴛʜ ᴇᴀᴄʜ ᴘʀᴇᴅᴇꜰɪɴᴇᴅ ᴀᴄᴛɪᴏɴꜱ ꜱᴜᴄʜ ᴀꜱ ʙᴀɴ, ᴍᴜᴛᴇ, ᴋɪᴄᴋ, ᴇᴛᴄ."
-            "\n➲  ɪ ʜᴀᴠᴇ ᴀ ɴᴏᴛᴇ ᴋᴇᴇᴘɪɴɢ ꜱʏꜱᴛᴇᴍ, ʙʟᴀᴄᴋʟɪꜱᴛꜱ, ᴀɴᴅ ᴇᴠᴇɴ ᴘʀᴇᴅᴇᴛᴇʀᴍɪɴᴇᴅ ʀᴇᴘʟɪᴇꜱ ᴏɴ ᴄᴇʀᴛᴀɪɴ ᴋᴇʏᴡᴏʀᴅꜱ."
-            f"\n\n➻ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ɢɪᴠᴇɴ ʙᴇʟᴏᴡ ғᴏʀ ɢᴇᴛᴛɪɴɢ ʙᴀsɪᴄ ʜᴇʟᴩ ᴀɴᴅ ɪɴғᴏ ᴀʙᴏᴜᴛ {dispatcher.bot.first_name}.",
+            "\n\n➲  kullanıcıları kısıtlayabilirim."
+            "\n➲  Gelişmiş bir su baskını önleme sistemine sahip olun."
+            "\n➲  Kullanıcıları özelleştirilebilir karşılama mesajlarıyla karşılayabilir ve hatta grup kuralları belirleyebilirim3z."
+            "\n➲  Yasaklama, sessize alma vb. gibi önceden tanımlanmış her eylemle kullanıcıları Maksimum Wnrs'ye ulaşana kadar uyarabilirim.."
+            "\n➲  Sistemin kara listelerini tutan bir notum ve hatta belirli anahtar kelimelerle ilgili önceden belirlenmiş yanıtlarım var."
+            f"\n\n➻ hakkında temel yardım ve bilgi almak için aşağıda verilen düğmelere tıklayın. {dispatcher.bot.first_name}.",
             parse_mode=ParseMode.MARKDOWN,
             
              reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", callback_data="Jarvis_support"),
-                        InlineKeyboardButton(text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"),
+                        InlineKeyboardButton(text="🍃destek🍃", callback_data="Jarvis_support"),
+                        InlineKeyboardButton(text="🍃geliştirici🍃", url=f"tg://user?id={OWNER_ID}"),
                     ],
                     [
                         
-                        InlineKeyboardButton(text="ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
+                        InlineKeyboardButton(text="🍃komutlar🍃", callback_data="help_back"),
                     ],
                     [
-                        InlineKeyboardButton(text="๏ ʙᴀᴄᴋ ๏", callback_data="Jarvis_back"),
+                        InlineKeyboardButton(text="🍃geri🍃", callback_data="Jarvis_back"),
                     ],
                 ]
             ),
         )
-    elif query.data == "Jarvis_support":
-        query.message.edit_caption("๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ɢɪᴠᴇɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ʜᴇʟᴩ ᴀɴᴅ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀ"
-            f"\n\nɪғ ʏᴏᴜ ғᴏᴜɴᴅ ᴀɴʏ ʙᴜɢ ɪɴ {dispatcher.bot.first_name} ᴏʀ ɪғ ʏᴏᴜ ᴡᴀɴɴᴀ ɢɪᴠᴇ ғᴇᴇᴅʙᴀᴄᴋ ᴀʙᴏᴜᴛ ᴛʜᴇ {dispatcher.bot.first_name}, ᴩʟᴇᴀsᴇ ʀᴇᴩᴏʀᴛ ɪᴛ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ.",
+    elif query.data == "Armageddonsohbet":
+        query.message.edit_caption("🍃 Yardım ve daha fazla bilgi almak için aşağıda verilen düğmelere tıklayın."
+            f"\n\nɪғ ʏᴏᴜ ғᴏᴜɴᴅ ᴀɴʏ ʙᴜɢ ɪɴ {dispatcher.bot.first_name} veya konuyla ilgili geri bildirimde bulunmak istiyorsanız {dispatcher.bot.first_name}, ᴩʟᴇᴀsᴇ ʀᴇᴩᴏʀᴛ ɪᴛ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+                            text="🍃destek🍃", url=f"https://t.me/{SUPPORT_CHAT}"
                         ),
                         InlineKeyboardButton(
-                            text="ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/JARVIS_V_SUPPORT"
+                            text="🍃güncelleme 🍃", url=f"https://t.me/JARVIS_V_SUPPORT"
                         ),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
+                            text="🍃geliştirici 🍃", url=f"tg://user?id={OWNER_ID}"
                         ),
                         InlineKeyboardButton(
-                            text="ɢɪᴛʜᴜʙ", url="https://github.com/doraemon890",
+                            text="🍃github🍃", url="https://github.com/doraemon890",
                         ),
                     ],
                     [
-                        InlineKeyboardButton(text="๏ ʙᴀᴄᴋ ๏", callback_data="Jarvis_"),
+                        InlineKeyboardButton(text="🍃 geri 🍃", callback_data="Jarvis_"),
                     ],
                 ]
             ),
@@ -465,50 +463,50 @@ def JarvisRobo_Main_Callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="📕 Mᴀɴᴀɢᴇᴍᴇɴᴛ", callback_data="help_back"),
-                        InlineKeyboardButton(text="Mᴜsɪᴄ 🎧", callback_data="Music_")
+                        InlineKeyboardButton(text="♻️ yönetim ", callback_data="help_back"),
+                        InlineKeyboardButton(text="müzik 🎧", callback_data="Music_")
                     ],
                     [
-                        InlineKeyboardButton(text="💁 Bᴀsɪᴄ ", callback_data="basic_help"),
+                        InlineKeyboardButton(text="💁 basic ", callback_data="basic_help"),
                         InlineKeyboardButton(text="Exᴘᴇʀᴛ 👮", callback_data="expert_help")
                     ],
                     [
-                        InlineKeyboardButton(text="🍹 Aᴅᴠᴀɴᴄᴇ", callback_data="advance_help"),
+                        InlineKeyboardButton(text="🍹 parti", callback_data="advance_help"),
                         InlineKeyboardButton(text="Dᴏɴᴀᴛɪᴏɴ 🎉", callback_data="donation_help") 
                     ],
-                    [InlineKeyboardButton(text="• Hᴏᴍᴇ •", callback_data="Jarvis_back")]
+                    [InlineKeyboardButton(text="• ana menü •", callback_data="Jarvis_back")]
                 ]
             ),
         )
     elif query.data=="basic_help":
-        query.message.edit_caption("""Bᴀsɪᴄ Cᴏᴍᴍᴀɴᴅs.
-👮🏻Aᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Aᴅᴍɪɴs & Mᴏᴅᴇʀᴀᴛᴏʀs.
-🕵🏻Aᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Aᴅᴍɪɴs.
+        query.message.edit_caption("""basic komutla.
+👮🏻 yönetici adminler & monitörler.
+🕵🏻adminleri kontrol etme.
 
-👮🏻 /reload ᴜᴘᴅᴀᴛᴇs ᴛʜᴇ Aᴅᴍɪɴs ʟɪsᴛ ᴀɴᴅ ᴛʜᴇɪʀ ᴘʀɪᴠɪʟᴇɢᴇs.
-🕵🏻 /settings ʟᴇᴛs ʏᴏᴜ ᴍᴀɴᴀɢᴇ ᴀʟʟ ᴛʜᴇ Bᴏᴛ sᴇᴛᴛɪɴɢs ɪɴ ᴀ ɢʀᴏᴜᴘ.
-👮🏻 /ban ʟᴇᴛs ʏᴏᴜ ʙᴀɴ ᴀ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ ᴡɪᴛʜᴏᴜᴛ ɢɪᴠɪɴɢ ʜɪᴍ ᴛʜᴇ ᴘᴏssɪʙɪʟɪᴛʏ ᴛᴏ Jᴏɪɴ ᴀɢᴀɪɴ ᴜsɪɴɢ ᴛʜᴇ ʟɪɴᴋ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.
-👮🏻 /mute ᴘᴜᴛs ᴀ ᴜsᴇʀ ɪɴ ʀᴇᴀᴅ-ᴏɴʟʏ ᴍᴏᴅᴇ. Hᴇ ᴄᴀɴ ʀᴇᴀᴅ ʙᴜᴛ ʜᴇ ᴄᴀɴ'ᴛ sᴇɴᴅ ᴀɴʏ ᴍᴇssᴀɢᴇs.
-👮🏻 /kick ʙᴀɴs ᴀ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ, ɢɪᴠɪɴɢ ʜɪᴍ ᴛʜᴇ ᴘᴏssɪʙɪʟɪᴛʏ ᴛᴏ Jᴏɪɴ ᴀɢᴀɪɴ ᴡɪᴛʜ ᴛʜᴇ ʟɪɴᴋ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.
-👮🏻 /unban ʟᴇᴛs ʏᴏᴜ ʀᴇᴍᴏᴠᴇ ᴀ ᴜsᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ's ʙʟᴀᴄᴋʟɪsᴛ, ɢɪᴠɪɴɢ ᴛʜᴇᴍ ᴛʜᴇ ᴘᴏssɪʙɪʟɪᴛʏ ᴛᴏ Jᴏɪɴ ᴀɢᴀɪɴ ᴡɪᴛʜ ᴛʜᴇ ʟɪɴᴋ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.
-👮🏻 /info ɢɪᴠᴇs ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀ ᴜsᴇʀ.
+👮🏻 /reload botları yeniden başlatır .
+🕵🏻 /settings bot grup ayarlarını gosterir.
+👮🏻 /ban kullanıcıları yasaklar grubu korur.
+👮🏻 /mute kullanıcıları sessize alır .
+👮🏻 /kick kullanıcıları gruptan tekmeler.
+👮🏻 /unban kullanıcıların yasağını kaldırır.
+👮🏻 /info kullanıcıların bilgilerini gösterir .
 
-◽️ /staff ɢɪᴠᴇs ᴛʜᴇ ᴄᴏᴍᴘʟᴇᴛᴇ Lɪsᴛ ᴏғ ɢʀᴏᴜᴘ Sᴛᴀғғ!.""",parse_mode=ParseMode.MARKDOWN,
+◽️ /staff grup personelinin tam listesini verir!.""",parse_mode=ParseMode.MARKDOWN,
             
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="• ʙᴀᴄᴋ •", callback_data="Main_help"),InlineKeyboardButton(text="• sᴜᴘᴘᴏʀᴛ •", callback_data="jarvis_support")
+                        InlineKeyboardButton(text="🍃 geri 🍃", callback_data="Main_help"),InlineKeyboardButton(text="• sᴜᴘᴘᴏʀᴛ •", callback_data="jarvis_support")
                     ]
                 ]
             ),
             )
     elif query.data=="Jarvis_back":
-        query.message.edit_caption("""Exᴘᴇʀᴛ ᴄᴏᴍᴍᴀɴᴅs
+        query.message.edit_caption("""uzman komutları
 
-👥 Aᴠᴀɪʟᴀʙʟᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs
-👮🏻 Aᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Aᴅᴍɪɴs & Mᴏᴅᴇʀᴀᴛᴏʀs.
-🕵🏻 Aᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Aᴅᴍɪɴs
+👥 Tüm kullanıcılar tarafından kullanılabilir
+👮🏻 yönetici moderatörlerinin kullanımına açıktır.
+🕵🏻 yöneticilerin kullanımına açıktır
 
 🕵🏻  /unbanall ᴍᴇᴍʙᴇʀs ғʀᴏᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘs
 👮🏻  /unmuteall ᴜɴᴍᴜᴛᴇᴀʟʟ ᴀʟʟ ғʀᴏᴍ Yᴏᴜʀ Gʀᴏᴜᴘ
@@ -663,37 +661,37 @@ def Music_about_callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-        InlineKeyboardButton(text="🏡", callback_data="Jarvis_back"),
-        InlineKeyboardButton(text="🛡️", callback_data="jarvis_"),
-        InlineKeyboardButton(text="💳", callback_data="source_"),
-        InlineKeyboardButton(text="🧑‍💻", url=f"tg://user?id={OWNER_ID}"),
+        InlineKeyboardButton(text="🎧", callback_data="Jarvis_back"),
+        InlineKeyboardButton(text="🎛️", callback_data="jarvis_"),
+        InlineKeyboardButton(text="🍷", callback_data="source_"),
+        InlineKeyboardButton(text="⚰️", url=f"tg://user?id={OWNER_ID}"),
         InlineKeyboardButton(text="🖥️", callback_data="Main_help"),
      ],
                     [
                         InlineKeyboardButton(
-                            text="⍟ ᴀᴅᴍɪɴ ⍟", callback_data="Music_admin"
+                            text="🍃yönetici🍃", callback_data="Music_admin"
                         ),
                         InlineKeyboardButton(
-                            text="⍟ ᴘʟᴀʏ ⍟", callback_data="Music_play"
+                            text="🍃oynat🍃", callback_data="Music_play"
                         ),
                     ],
                     [
-                        InlineKeyboardButton(text="⍟ ʙᴏᴛ ⍟", callback_data="Music_bot"),
+                        InlineKeyboardButton(text="🍃bot🍃", callback_data="Music_bot"),
                         InlineKeyboardButton(
-                            text="⍟ ᴇxᴛʀᴀ ⍟",
+                            text=" 🍃ᴇxᴛʀᴀ🍃 ",
                             callback_data="Music_extra",
                         ),
                     ],
                     [
-                        InlineKeyboardButton(text="• ʙᴀᴄᴋ •", callback_data="Main_help")
+                        InlineKeyboardButton(text="🍃 geri 🍃", callback_data="Main_help")
                     ],
                 ]
             ),
         )
     elif query.data == "Music_admin":
-        query.message.edit_caption(f"*» ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ «*"
+        query.message.edit_caption(f"*» yönetici komutları «*"
             f"""
-ᴊᴜsᴛ ᴀᴅᴅ *ᴄ* ɪɴ ᴛʜᴇ sᴛᴀʀᴛɪɴɢ ᴏғ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴜsᴇ ᴛʜᴇᴍ ғᴏʀ ᴄʜᴀɴɴᴇʟ.
+kanal için kullanmak üzere komutların başına *c* eklemeniz yeterlidir.
 
 /pause : ᴩᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴩʟᴀʏɪɴɢ sᴛʀᴇᴀᴍ.
 
@@ -1091,8 +1089,8 @@ def main():
                 [
                     [
                         InlineKeyboardButton(
-                            text="➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ➕",
-                            url="https://t.me/JARVIS_N_ROBOT?startgroup=true"
+                            text="🍃beni grubuna ekle bebeğim 🍃",
+                            url="https://t.me/uyuyanprensesinki_bot?startgroup=true"
                             )
                        ]
                 ]
@@ -1103,13 +1101,14 @@ def main():
                 f"@{SUPPORT_CHAT}",
                 photo=f"{START_IMG}",
                 caption=f"""
-✨ㅤ{BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ.
+✨ㅤ{BOT_NAME} bot aktif bebeğim.
 ━━━━━━━━━━━━━
-**ᴍᴀᴅᴇ 💗 ʙʏ ᴊᴀʀᴠɪs**
-**ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ:** `{y()}`
-**ʟɪʙʀᴀʀʏ ᴠᴇʀsɪᴏɴ:** `{telever}`
-**ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀsɪᴏɴ:** `{tlhver}`
-**ᴩʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ:** `{pyrover}`
+**Made by merve**
+**versiyon 1:** `{y()}`
+**versiyon 2:** `{telever}`
+**versiyon 3:** `{tlhver}`
+**versiyon 4:** `{pyrover}`
+EXPFED🦂 2016
 ━━━━━━━━━━━━━
 """,reply_markup=x,
                 parse_mode=ParseMode.MARKDOWN,
