@@ -7,12 +7,12 @@ from JarvisRobo import telethn as client
 
 spam_chats = []
 
-@client.on(events.NewMessage(pattern=r"^(@tagall|@all|/tagall|@mention) ?(.*)"))
+@client.on(events.NewMessage(pattern=r"^(@utag|@all|/tagall|@mention) ?(.*)"))
 async def mention_all(event):
     chat_id = event.chat_id
 
     if event.is_private:
-        return await event.respond("__This command can only be used in groups and channels!__")
+        return await event.respond("__Bu komut yalnızca grup ve kanallarda kullanılabilir!__")
 
     is_admin = False
     try:
@@ -23,7 +23,7 @@ async def mention_all(event):
         pass
 
     if not is_admin:
-        return await event.respond("__Only admins can mention all!__")
+        return await event.respond("__sadece adminler bu komutu kullanabilir!__")
 
     mode = "text_on_cmd"
     msg = None
@@ -61,7 +61,7 @@ async def mention_all(event):
 @client.on(events.NewMessage(pattern=r"^/cancel$"))
 async def cancel_spam(event):
     if event.chat_id not in spam_chats:
-        return await event.respond("There is no process going on.")
+        return await event.respond("Devam eden bir süreç yok.")
 
     is_admin = False
     try:
@@ -72,14 +72,14 @@ async def cancel_spam(event):
         pass
 
     if not is_admin:
-        return await event.respond("__Only admins can execute this command!__")
+        return await event.respond("__Bu komutu yalnızca yöneticiler yürütebilir!__")
 
     spam_chats.remove(event.chat_id)
-    return await event.respond("Stopped mention.")
+    return await event.respond("etiketleme işlemi durdu.")
 
-__mod_name__ = "Tᴀɢᴀʟʟ"
+__mod_name__ = "utag"
 __help__ = """
-──「  ᴏɴʟʏ ғᴏʀ ᴀᴅᴍɪɴs 」──
+──「  sadece adminler 」──
 
-❍ /tagall or @all '(ʀᴇᴘʟʏ ᴛᴏ ᴍᴇssᴀɢᴇ ᴏʀ ᴀᴅᴅ ᴀɴᴏᴛʜᴇʀ ᴍᴇssᴀɢᴇ) ᴛᴏ ᴍᴇɴᴛɪᴏɴ ᴀʟʟ ᴍᴇᴍʙᴇʀs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ, ᴡɪᴛʜᴏᴜᴛ ᴇxᴄᴇᴘᴛɪᴏɴ.'
+❍ /utag or @all '(kullanıcıları etiketler.'
 """
