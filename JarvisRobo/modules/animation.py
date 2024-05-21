@@ -326,4 +326,4 @@ __help__ = """
  ❍ /brain - tren anime
  ❍ /police - polis anime
 """
-__mod_name__ = "Gᴀᴍᴇ"
+__mod_name__ = "✨animasyon✨"
