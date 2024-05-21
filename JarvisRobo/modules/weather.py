@@ -19,7 +19,7 @@ async def is_register_admin(chat, user):
         return True
 
 
-@register(pattern="^/weather (.*)")
+@register(pattern="^/havadurumu (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -42,4 +42,4 @@ __help__ = """
  ❍ /weather  ᴍᴏᴏɴ*:* ɢᴇᴛ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛᴜs ᴏғ ᴍᴏᴏɴ
 """
 
-__mod_name__ = "Wᴇᴀᴛʜᴇʀ"
+__mod_name__ = "✨hava durumu ✨"
