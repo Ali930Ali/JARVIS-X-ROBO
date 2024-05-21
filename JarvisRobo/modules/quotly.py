@@ -390,7 +390,7 @@ async def quott_(event):
     return message
 
 
-__mod_name__ = "Qᴜᴏᴛʟʏ"
+__mod_name__ = "✨Qᴜᴏᴛʟʏ✨"
 
 __help__="""
 •➥ /q → ᴄʀᴇᴀᴛᴇ ᴀ ǫᴜᴏᴛᴇ ғʀᴏᴍ ᴛʜᴇ ᴍᴇssᴀɢᴇ 
