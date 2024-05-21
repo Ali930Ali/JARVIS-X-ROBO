@@ -80,6 +80,6 @@ def song(client, message):
         print(e)
 
 
-# __mod_name__ = "şarkı"
+# __mod_name__ = "✨şarkı✨"
 # __help__ = """
 # /bul şarkı indirir."""
