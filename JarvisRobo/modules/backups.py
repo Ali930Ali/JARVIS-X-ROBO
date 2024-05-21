@@ -366,10 +366,10 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-__mod_name__ = "Bᴀᴄᴋᴜᴘ"
+__mod_name__ = "✨Destek olmak✨"
 
 __help__ = """
-*ᴏɴʟʏ ғᴏʀ ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ:*
+*destek komutları:*
 
  ❍ /import : ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴇ ʙᴀᴄᴋᴜᴘ ғɪʟᴇ ғᴏʀ ᴛʜᴇ ʙᴜᴛʟᴇʀ / ᴇᴍɪʟɪᴀ ɢʀᴏᴜᴘ ᴛᴏ ɪᴍᴘᴏʀᴛ ᴀs ᴍᴜᴄʜ ᴀs ᴘᴏssɪʙʟᴇ, ᴍᴀᴋɪɴɢ ᴛʀᴀɴsғᴇʀs ᴠᴇʀʏ ᴇᴀsʏ! \
  ɴᴏᴛᴇ ᴛʜᴀᴛ ғɪʟᴇs / ᴘʜᴏᴛᴏs ᴄᴀɴɴᴏᴛ ʙᴇ ɪᴍᴘᴏʀᴛᴇᴅ ᴅᴜᴇ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴍ ʀᴇsᴛʀɪᴄᴛɪᴏɴs.
