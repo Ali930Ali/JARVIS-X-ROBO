@@ -4,7 +4,7 @@ from telethon import Button, events
 
 from .. import telethn as asst, SUPPORT_CHAT as c
 
-BUTTON = [[Button.url("🍒 ꜱᴜᴘᴘᴏʀᴛ 🍒", f"https://t.me/{c}")]]
+BUTTON = [[Button.url("🍒 destek 🍒", f"https://t.me/{c}")]]
 HOT = "https://graph.org/file/745ba3ff07c1270958588.mp4"
 SMEXY = "https://graph.org/file/58da22eb737af2f8963e6.mp4"
 LEZBIAN = "https://graph.org/file/ff258085cf31f5385db8a.mp4"
@@ -86,4 +86,4 @@ __help__ = """
 ➻ /cute - ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ᴄᴜᴛᴇɴᴇꜱꜱ
 """
 
-__mod_name__ = "Sᴇxʏ"
+__mod_name__ = "✨Sᴇxʏ✨"
