@@ -106,7 +106,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text=" 🍃detaylar🍃 ", callback_data="Jarvis_"),
-        InlineKeyboardButton(text="✨ destej ✨", url=f"https://t.me/JARVIS_V_SUPPORT"),
+        InlineKeyboardButton(text="✨ MÜZİK BOT ✨", url=f"https://t.me/kumsalmuzikbot"),
     ],
    [
         InlineKeyboardButton(text="🥀 geliştirici 🥀", url=f"tg://user?id={OWNER_ID}"),
@@ -398,7 +398,7 @@ def Jarvis_about_callback(update: Update, context: CallbackContext):
              reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="🍃destek🍃", callback_data="Jarvis_support"),
+                        InlineKeyboardButton(text="🍃destek🍃", callback_data="@Armageddonsohbet"),
                         InlineKeyboardButton(text="🍃geliştirici🍃", url=f"tg://user?id={OWNER_ID}"),
                     ],
                     [
@@ -422,7 +422,7 @@ def Jarvis_about_callback(update: Update, context: CallbackContext):
                             text="🍃destek🍃", url=f"https://t.me/{SUPPORT_CHAT}"
                         ),
                         InlineKeyboardButton(
-                            text="🍃güncelleme 🍃", url=f"https://t.me/JARVIS_V_SUPPORT"
+                            text="🍃güncelleme 🍃", url=f"https://t.me/Armageddonsohbet"
                         ),
                     ],
                     [
