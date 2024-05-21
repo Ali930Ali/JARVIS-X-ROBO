@@ -317,13 +317,13 @@ dispatcher.add_handler(BRAINANIMATION_HANDLER)
 
 __help__ = """
 
-*ғᴀᴋᴇ ᴀɴɪᴍᴀᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅ*
- ❍ /love - ᴜsᴇ ɪᴛ ɪғ ᴜ ʜᴀᴠᴇ ɢɪʀʟғʀɪᴇɴᴅ
- ❍ /hack -  ᴛᴏ ʜᴀᴄᴋ ᴀɴʏ ᴜsᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ
- ❍ /moon    - ᴛᴏ ᴡɪsʜ ɢɴ ᴛᴏ ᴜʀ ʟᴏᴠᴇ
- ❍ /kill  -  ᴛᴏ ᴋɪʟʟ  ᴜʀ ɢғ ᴅᴀᴅ
- ❍ /bombs -  ᴛᴏ sᴜᴄɪᴅᴇ ᴜʀsᴇʟғ
- ❍ /brain - ᴄʜᴇᴄᴋ ʏᴏᴜʀ ʙʀᴀɪɴ sᴛᴀᴛᴜs
- ❍ /police - ᴛᴏ ᴄᴀʟʟ ᴍᴀsᴛᴇʀᴍɪɴᴅ ᴘᴏʟɪᴄᴇ
+*Animasyonlar*
+ ❍ /love - seni seviyorum anime
+ ❍ /hack -  hacker anime
+ ❍ /moon    - karışık emojiler anime
+ ❍ /kill  -  ölüm anime
+ ❍ /bombs -  bomba anime
+ ❍ /brain - tren anime
+ ❍ /police - polis anime
 """
 __mod_name__ = "Gᴀᴍᴇ"
