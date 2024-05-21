@@ -7,7 +7,7 @@ from JarvisRobo import telethn as client
 
 spam_chats = []
 
-@client.on(events.NewMessage(pattern=r"^(@utag|@all|/tagall|@mention) ?(.*)"))
+@client.on(events.NewMessage(pattern=r"^(@utag|@all|/utag|@mention) ?(.*)"))
 async def mention_all(event):
     chat_id = event.chat_id
 
@@ -77,7 +77,7 @@ async def cancel_spam(event):
     spam_chats.remove(event.chat_id)
     return await event.respond("etiketleme işlemi durdu.")
 
-__mod_name__ = "utag"
+__mod_name__ = "✨etiket atmak✨"
 __help__ = """
 ──「  sadece adminler 」──
 
