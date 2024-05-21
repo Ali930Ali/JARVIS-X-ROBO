@@ -23,7 +23,7 @@ sᴜᴄᴇssғᴜʟʟʏ ᴡʀɪᴛᴛᴇɴ ᴛᴇxᴛ 💘
     await m.delete()
     await message.reply_photo(photo=write,caption=caption)
 
-__mod_name__ = "WʀɪᴛᴇTᴏᴏʟ"
+__mod_name__ = "✨WʀɪᴛᴇTᴏᴏʟ✨"
 
 __help__ = """
 
