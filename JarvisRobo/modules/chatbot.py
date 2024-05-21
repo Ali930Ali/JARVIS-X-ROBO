@@ -46,7 +46,7 @@ def jarvisrm(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "{} ᴄʜᴀᴛʙᴏᴛ ᴅɪsᴀʙʟᴇᴅ ʙʏ {}.".format(
+                "{} chatbot'u şu şekilde devre dışı bırak: chatbot enable {}.".format(
                     dispatcher.bot.first_name, mention_html(user.id, user.first_name)
                 ),
                 parse_mode=ParseMode.HTML,
