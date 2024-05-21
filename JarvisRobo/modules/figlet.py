@@ -9,7 +9,7 @@ def figle(text):
     x = pyfiglet.FigletFont.getFonts()
     font = choice(x)
     figled = str(pyfiglet.figlet_format(text,font=font))
-    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(text="ᴄʜᴀɴɢᴇ", callback_data="figlet"),InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="close_reply")]])
+    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(text="ᴄʜᴀɴɢᴇ", callback_data="figlet"),InlineKeyboardButton(text="🍃geri🍃", callback_data="close_reply")]])
     return figled, keyboard
 
 @Client.on_message(filters.command("figlet"))
@@ -29,7 +29,7 @@ async def figlet_handler(Client, query: CallbackQuery):
       await query.message.edit_text(f"ʜᴇʀᴇ ɪs ʏᴏᴜʀ ғɪɢʟᴇᴛ :\n<pre>{kul_text}</pre>", reply_markup=keyboard)
   except Exception as e : 
       await message.reply(e)
-__mod_name__ = "Fɪɢʟᴇᴛ" 
+__mod_name__ = "✨Fɪɢʟᴇᴛ✨" 
 __help__="""
 ❍ /figlet*:* ᴍᴀᴋᴇs ғɪɢʟᴇᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ
 Example:\n\n`/figlet Jarvis`"""
