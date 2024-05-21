@@ -29,7 +29,7 @@ async def imagine_(b, message: Message):
         await mukesh.edit_text(f"error {e}")
     
 
-__mod_name__ = "Aɪ ɪᴍᴀɢᴇ"
+__mod_name__ = "✨Aɪ ɪᴍᴀɢᴇ✨"
 __help__ = """
  ➻ /imagine : ɢᴇɴᴇʀᴀᴛᴇ Aɪ ɪᴍᴀɢᴇ ғʀᴏᴍ ᴛᴇxᴛ
  """
