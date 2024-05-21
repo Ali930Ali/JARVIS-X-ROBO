@@ -85,4 +85,4 @@ __help__ = """
  ❍ /short <url>  *:Example `/short https://t.me/mr_sukkun`.
  *"""
 
-__mod_name__ = "Sʜᴏʀᴛᴇɴᴇʀ"
+__mod_name__ = "✨Sʜᴏʀᴛᴇɴᴇʀ✨"
