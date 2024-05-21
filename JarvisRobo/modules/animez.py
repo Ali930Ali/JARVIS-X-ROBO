@@ -424,7 +424,7 @@ def user(update: Update, context: CallbackContext):
 
     caption += textwrap.dedent(
         f"""
-    *ᴜsᴇʀɴᴀᴍᴇ*: [{us['username']}]({us['url']})
+    *kullanıcı adı*: [{us['username']}]({us['url']})
 
     *ɢᴇɴᴅᴇʀ*: `{us['gender']}`
     *ʙɪʀᴛʜᴅᴀʏ*: `{user_birthday_formatted}`
@@ -574,7 +574,7 @@ dispatcher.add_handler(KAIZOKU_SEARCH_HANDLER)
 dispatcher.add_handler(KAYO_SEARCH_HANDLER)
 dispatcher.add_handler(UPCOMING_HANDLER)
 
-__mod_name__ = "Aɴɪᴍᴇ"
+__mod_name__ = "✨animez✨"
 __command_list__ = [
     "anime",
     "manga",
