@@ -117,7 +117,7 @@ def filters(update, context):
     if not msg.reply_to_message and len(args) < 2:
         send_message(
             update.effective_message,
-            "Please provide keyboard keyword for this filter to reply with!",
+            "Lütfen bu filtrenin yanıt vereceği klavye anahtar kelimesini sağlayın!",
         )
         return
 
@@ -125,7 +125,7 @@ def filters(update, context):
         if len(args) < 2:
             send_message(
                 update.effective_message,
-                "Please provide keyword for this filter to reply with!",
+                "Lütfen bu filtrenin yanıt vereceği anahtar kelimeyi belirtin!",
             )
             return
         else:
@@ -155,7 +155,7 @@ def filters(update, context):
         if not text:
             send_message(
                 update.effective_message,
-                "There is no note message - You can't JUST have buttons, you need a message to go with it!",
+                "not mesajı yok - yalnızca düğmelere sahip olamazsınız, onunla birlikte bir mesaja da ihtiyacınız var!",
             )
             return
 
@@ -177,7 +177,7 @@ def filters(update, context):
     elif not text and not file_type:
         send_message(
             update.effective_message,
-            "Please provide keyword for this filter reply with!",
+            "lütfen bu filtre yanıtı için kryword'ü sağlayın!",
         )
         return
 
@@ -198,12 +198,12 @@ def filters(update, context):
         if (msg.reply_to_message.text or msg.reply_to_message.caption) and not text:
             send_message(
                 update.effective_message,
-                "There is no note message - You can't JUST have buttons, you need a message to go with it!",
+                "not mesajı yok - yalnızca düğmelere sahip olamazsınız, onunla birlikte bir mesaja da ihtiyacınız var!",
             )
             return
 
     else:
-        send_message(update.effective_message, "Invalid filter!")
+        send_message(update.effective_message, "Geçersiz filtre!")
         return
 
     add = addnew_filter(update, chat_id, keyword, text, file_type, file_id, buttons)
@@ -213,7 +213,7 @@ def filters(update, context):
     if add is True:
         send_message(
             update.effective_message,
-            "Saved filter '{}' in *{}*!".format(keyword, chat_name),
+            "filtre kaydedildiği aşkım'{}' in *{}*!".format(keyword, chat_name),
             parse_mode=telegram.ParseMode.MARKDOWN,
         )
     raise DispatcherHandlerStop
@@ -239,13 +239,13 @@ def stop_filter(update, context):
             chat_name = chat.title
 
     if len(args) < 2:
-        send_message(update.effective_message, "What should i stop?")
+        send_message(update.effective_message, "neyi durdurmalıyım filtre söylesene alla alla?")
         return
 
     chat_filters = sql.get_chat_triggers(chat_id)
 
     if not chat_filters:
-        send_message(update.effective_message, "No filters active here!")
+        send_message(update.effective_message, "Burada etkin filtre yok!")
         return
 
     for keyword in chat_filters:
@@ -253,14 +253,14 @@ def stop_filter(update, context):
             sql.remove_filter(chat_id, args[1])
             send_message(
                 update.effective_message,
-                "Okay, I'll stop replying to that filter in *{}*.".format(chat_name),
+                "Tamam, o filtreye yanıt vermeyi bırakacağım *{}*.".format(chat_name),
                 parse_mode=telegram.ParseMode.MARKDOWN,
             )
             raise DispatcherHandlerStop
 
     send_message(
         update.effective_message,
-        "That's not a filter - Click: /filters to get currently active filters.",
+        "Bu bir filtre değil - Şu anda etkin olan filtreleri almak için /filters'a tıklayın.",
     )
 
 
@@ -316,15 +316,15 @@ def reply_filter(update, context):
                         except BadRequest as excp:
                             if (
                                 excp.message
-                                == "Wrong remote file identifier specified: wrong padding in the string"
+                                == "Yanlış uzak dosya tanımlayıcısı belirtildi: dizede yanlış dolgu"
                             ):
                                 context.bot.send_message(
                                     chat.id,
-                                    "Message couldn't be sent, Is the sticker id valid?",
+                                    "Mesaj gönderilemedi, Etiket kimliği geçerli mi??",
                                 )
                                 return
                             else:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGGER.exception("Filtrelerde hata: " + excp.message)
                                 return
                     valid_format = escape_invalid_curly_brackets(
                         text, VALID_WELCOME_FORMATTERS
@@ -384,7 +384,7 @@ def reply_filter(update, context):
                                     reply_markup=keyboard,
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGGER.exception("Filtrelerde hata: " + excp.message)
                                 send_message(
                                     update.effective_message,
                                     get_exception(excp, filt, chat),
@@ -411,7 +411,7 @@ def reply_filter(update, context):
                     except BadRequest:
                         send_message(
                             message,
-                            "I don't have the permission to send the content of the filter.",
+                            "Filtre içeriğini gönderme iznim yok.",
                         )
                 break
             else:
@@ -445,7 +445,7 @@ def reply_filter(update, context):
                             try:
                                 send_message(
                                     update.effective_message,
-                                    "You seem to be trying to use an unsupported url protocol. "
+                                    "Desteklenmeyen bir URL protokolü kullanmaya çalışıyor gibisiniz. "
                                     "Telegram doesn't support buttons for some protocols, such as tg://. Please try "
                                     "again...",
                                 )
@@ -627,8 +627,8 @@ __help__ = """
 
 __mod_name__ = "✨Fɪʟᴛᴇʀs✨"
 
-FILTER_HANDLER = CommandHandler("filter", filters, run_async=True)
-STOP_HANDLER = CommandHandler("stop", stop_filter, run_async=True)
+FILTER_HANDLER = CommandHandler("filter", "banayap", filters, run_async=True)
+STOP_HANDLER = CommandHandler("stop", "sil", stop_filter, run_async=True)
 RMALLFILTER_HANDLER = CommandHandler(
     "removeallfilters", rmall_filters, filters=Filters.chat_type.groups, run_async=True
 )
