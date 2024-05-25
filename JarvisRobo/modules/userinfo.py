@@ -174,23 +174,23 @@ async def group_info(event) -> None:
             "ᴄᴀɴ'ᴛ ғᴏʀ sᴏᴍᴇ ʀᴇᴀsᴏɴ, ᴍᴀʏʙᴇ ɪᴛ ɪs ᴀ ᴘʀɪᴠᴀᴛᴇ ᴏɴᴇ ᴏʀ ᴛʜᴀᴛ ɪ ᴀᴍ ʙᴀɴɴᴇᴅ ᴛʜᴇʀᴇ."
         )
         return
-    msg = f"**kimlik**: `{entity.id}`"
-    msg += f"\n**bilgi**: `{entity.title}`"
-    msg += f"\n**Biyo fotoğraf**: `{entity.photo.dc_id}`"
-    msg += f"\n**biyo video**: `{entity.photo.has_video}`"
-    msg += f"\n**süper grup**: `{entity.megagroup}`"
-    msg += f"\n**kısıtlı**: `{entity.restricted}`"
-    msg += f"\n**s cam**: `{entity.scam}`"
-    msg += f"\n**slow modu**: `{entity.slowmode_enabled}`"
+    msg = f"**ɪᴅ**: `{entity.id}`"
+    msg += f"\n**ᴛɪᴛʟᴇ**: `{entity.title}`"
+    msg += f"\n**ᴅᴄ**: `{entity.photo.dc_id}`"
+    msg += f"\n**ᴠɪᴅᴇᴏ ᴩғᴩ**: `{entity.photo.has_video}`"
+    msg += f"\n**sᴜᴩᴇʀɢʀᴏᴜᴩ**: `{entity.megagroup}`"
+    msg += f"\n**ʀᴇsᴛʀɪᴄᴛᴇᴅ**: `{entity.restricted}`"
+    msg += f"\n**sᴄᴀᴍ**: `{entity.scam}`"
+    msg += f"\n**sʟᴏᴡᴍᴏᴅᴇ**: `{entity.slowmode_enabled}`"
     if entity.username:
-        msg += f"\n**kullanıcı adı**: @{entity.username}"
-    msg += "\n\n**üye sayısı:**"
-    msg += f"\nyönetici: `{len(totallist)}`"
-    msg += f"\nkullanıcı: `{totallist.total}`"
-    msg += "\n\n**admin listesi:**"
+        msg += f"\n**ᴜsᴇʀɴᴀᴍᴇ**: @{entity.username}"
+    msg += "\n\n**ᴍᴇᴍʙᴇʀ sᴛᴀᴛs:**"
+    msg += f"\nᴀᴅᴍɪɴs: `{len(totallist)}`"
+    msg += f"\nᴜsᴇʀs: `{totallist.total}`"
+    msg += "\n\n**ᴀᴅᴍɪɴs ʟɪsᴛ:**"
     for x in totallist:
         msg += f"\n• [{x.id}](tg://user?id={x.id})"
-    msg += f"\n\n**giriş hakkında**:\n`{ch_full.full_chat.about}`"
+    msg += f"\n\n**ᴅᴇsᴄʀɪᴩᴛɪᴏɴ**:\n`{ch_full.full_chat.about}`"
     await event.reply(msg)
 
 
@@ -235,33 +235,33 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>ᴇxᴛʀᴀᴄᴛɪɴɢ ɪɴғᴏʀᴍᴀᴛɪᴏɴ...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"ㅤ ㅤㅤ      ✦ kullanıcı bilgileri✦\n•❅─────✧❅✦❅✧─────❅•\n\n"
-        f" <b>kimlik:</b> <code>{user.id}</code>\n"
-        f" <b>adı:</b> {html.escape(user.first_name)}"
+        f"ㅤ ㅤㅤ      ✦ ᴜsᴇʀ ɪɴғᴏ ✦\n•❅─────✧❅✦❅✧─────❅•\n\n"
+        f"➻ <b>ᴜsᴇʀ ɪᴅ:</b> <code>{user.id}</code>\n"
+        f"➻ <b>ғɪʀsᴛ ɴᴀᴍᴇ:</b> {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n➻ <b> soy adı:</b> {html.escape(user.last_name)}"
+        text += f"\n➻ <b>ʟᴀsᴛ ɴᴀᴍᴇ:</b> {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n➻ <b>kullanıcı adı:</b> @{html.escape(user.username)}"
+        text += f"\n➻ <b>ᴜsᴇʀɴᴀᴍᴇ:</b> @{html.escape(user.username)}"
 
-    text += f"\n➻ <b>bağlantı:</b> {mention_html(user.id, 'link')}"
+    text += f"\n➻ <b>ʟɪɴᴋ:</b> {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\n➻ <b>unvanı:</b> <code>{}</code>"
+        _stext = "\n➻ <b>ᴩʀᴇsᴇɴᴄᴇ:</b> <code>{}</code>"
 
         status = status = bot.get_chat_member(chat.id, user.id).status
         if status:
             if status in {"left", "kicked"}:
-                text += _stext.format("not here")
+                text += _stext.format("ɴᴏᴛ ʜᴇʀᴇ")
             elif status == "member":
-                text += _stext.format("Saptanmış")
+                text += _stext.format("ᴅᴇᴛᴇᴄᴛᴇᴅ")
             elif status in {"administrator", "creator"}:
-                text += _stext.format("yönetici")
+                text += _stext.format("ᴀᴅᴍɪɴ")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>sağlık:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>ʜᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     disaster_level_present = False
 
@@ -285,7 +285,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' \n[<a href="https://t.me/kumsaldestek">ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴋɴᴏᴡ ᴡʜᴀᴛ ɪs ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟs.</a>]'.format(
+        text += ' \n[<a href="https://t.me/JARVIS_V_SUPPORT">ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴋɴᴏᴡ ᴡʜᴀᴛ ɪs ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟs.</a>]'.format(
             bot.username
         )
 
@@ -298,7 +298,7 @@ def info(update: Update, context: CallbackContext):
             result = result.json()["result"]
             if "custom_title" in result.keys():
                 custom_title = result["custom_title"]
-                text += f"\n\nbilgi:\n<b>{custom_title}</b>"
+                text += f"\n\nᴛɪᴛʟᴇ:\n<b>{custom_title}</b>"
     except BadRequest:
         pass
 
@@ -324,7 +324,7 @@ def info(update: Update, context: CallbackContext):
                         
                         [
                             InlineKeyboardButton(
-                                text="➕beni grubuna ekle ➕",
+                                text="➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ➕",
                                 url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                             ),
                         ],
@@ -343,7 +343,7 @@ def info(update: Update, context: CallbackContext):
                         
                         [
                             InlineKeyboardButton(
-                                text="➕beni grubuna ekle➕",
+                                text="➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ➕",
                                 url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                             ),
                         ],
@@ -558,7 +558,7 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "✨Iɴꜰᴏ✨"
+__mod_name__ = "Iɴꜰᴏ"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER,
