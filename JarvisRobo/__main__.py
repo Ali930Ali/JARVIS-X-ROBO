@@ -1119,7 +1119,7 @@ EXPFED🦂 2016
             )
         except BadRequest as e:
             LOGGER.warning(e.message)
-    start_handler = CommandHandler("mehmet", start, run_async=True)
+    start_handler = CommandHandler("start", start, run_async=True)
 
     help_handler = CommandHandler("help", get_help, run_async=True)
     help_callback_handler = CallbackQueryHandler(
