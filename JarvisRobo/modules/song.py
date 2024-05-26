@@ -13,7 +13,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@pbot.on_message(filters.command(["bulmas", "masum"]))
+@pbot.on_message(filters.command(["bul", "indir"]))
 def song(client, message):
 
     message.delete()
