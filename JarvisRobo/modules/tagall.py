@@ -7,7 +7,7 @@ from JarvisRobo import telethn as client
 
 spam_chats = []
 
-@client.on(events.NewMessage(pattern=r"^(@utag|@all|/utag|@mention) ?(.*)"))
+@client.on(events.NewMessage(pattern=r"^(@tagammmm|@laww|/tygaaaa|@mention) ?(.*)"))
 async def mention_all(event):
     chat_id = event.chat_id
 
