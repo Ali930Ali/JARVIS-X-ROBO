@@ -1,35 +1,34 @@
 
 class Config(object):
     LOGGER = True
-    # REQUIRED
-    # Login to https://my.telegram.org and fill in these slots with the details given by it
+    # GEREKLİ
+    # https://my.telegram.org adresine giriş yapın ve verilen ayrıntılarla bu alanları doldurun
 
-    API_ID = "" # integer value, dont use ""
+    API_ID = "" # tam sayı değeri, çift tırnak kullanmayın ""
     API_HASH = ""
-    TOKEN = ""  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = "7036733368" # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    TOKEN = ""  # Bu değişken API_KEY iken şimdi TOKEN, buna göre ayarlayın.
+    OWNER_ID = "7036733368" # Bilmiyorsanız, botu çalıştırın ve onunla özel sohbetinizde /id yazın, ayrıca tam sayı
     
-    SUPPORT_CHAT = "https://t.me/Armageddonsohbet"  # Your own group for support, do not add the @
+    SUPPORT_CHAT = "https://t.me/Armageddonsohbet"  # Destek için kendi grubunuz, @ eklemeyin
     START_IMG = ""
-    EVENT_LOGS = ()  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    MONGO_DB_URI= "mongodb+srv://MANAGERDB:RAJNISHAYUSHI@managerdb.lfnlzdk.mongodb.net/?retryWrites=true&w=majority&appName=managerdb"
-    # RECOMMENDED
-    DATABASE_URL = ""  # A sql database url from elephantsql.com
+    EVENT_LOGS = ()  # gbans, sudo promosyonları, AI etkinleştirme devre dışı bırakma durumları gibi hata ayıklamaya ve benzeri durumlara yardımcı olabilecek bilgileri yazdırır
+    MONGO_DB_URI = "mongodb+srv://MANAGERDB:RAJNISHAYUSHI@managerdb.lfnlzdk.mongodb.net/?retryWrites=true&w=majority&appName=managerdb"
+    # ÖNERİLEN
+    DATABASE_URL = ""  # elephantsql.com'dan bir sql veritabanı url'si
     CASH_API_KEY = (
-        " X652FNVGJ0ZXABM0"  # Get your API key from https://www.alphavantage.co/support/#api-key
+        "X652FNVGJ0ZXABM0"  # API anahtarınızı https://www.alphavantage.co/support/#api-key adresinden alın
     )
     TIME_API_KEY = "VR8S3BA8ESW3"
     
-    # Get your API key from https://timezonedb.com/api
+    # API anahtarınızı https://timezonedb.com/api adresinden alın
 
-
-    # Optional fields
-    BL_CHATS = []  # List of groups that you want blacklisted.
-    DRAGONS = []  # User id of sudo users
-    DEV_USERS = []  # User id of dev users
-    DEMONS = []  # User id of support users
-    TIGERS = []  # User id of tiger users
-    WOLVES = []  # User id of whitelist users
+    # İsteğe bağlı alanlar
+    BL_CHATS = []  # Karalisteye almak istediğiniz grupların listesi.
+    DRAGONS = []  # Sudo kullanıcılarının kullanıcı kimliği
+    DEV_USERS = []  # Geliştirici kullanıcılarının kullanıcı kimliği
+    DEMONS = []  # Destek kullanıcılarının kullanıcı kimliği
+    TIGERS = []  # Kaplan kullanıcılarının kullanıcı kimliği
+    WOLVES = []  # Beyaz liste kullanıcılarının kullanıcı kimliği
 
     ALLOW_CHATS = True
     ALLOW_EXCL = True
@@ -48,3 +47,4 @@ class Production(Config):
 
 class Development(Config):
     LOGGER = True
+    
