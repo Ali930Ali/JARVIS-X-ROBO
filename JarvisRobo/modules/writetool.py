@@ -5,29 +5,29 @@ from JarvisRobo import BOT_NAME, BOT_USERNAME
 from JarvisRobo import pbot as jarvis
 import requests
 
-@jarvis.on_message(filters.command("write"))
-async def handwrite(_, message: Message):
+@jarvis.on_message(filters.command("yaz"))
+async def el_yazısı(_, message: Message):
     if message.reply_to_message:
-        text = message.reply_to_message.text
+        metin = message.reply_to_message.text
     else:
-        text =message.text.split(None, 1)[1]
-    m =await message.reply_text( "`Please wait...,\n\nWriting your text...`")
+        metin = message.text.split(None, 1)[1]
+    yanıt_mesajı = await message.reply_text( "`Lütfen bekleyin...,\n\nMetninizi yazıyorum...`")
     
-    write = requests.get(f"https://apis.xditya.me/write?text={text}").url
+    yazılmış_resim = requests.get(f"https://apis.xditya.me/write?text={metin}").url
 
-    caption = f"""
-sᴜᴄᴇssғᴜʟʟʏ ᴡʀɪᴛᴛᴇɴ ᴛᴇxᴛ 💘
-✨ **ᴡʀɪᴛᴛᴇɴ ʙʏ :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
-🥀 **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}
+    altyazı = f"""
+Metin başarıyla yazıldı 💘
+✨ **Yazan :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
+🥀 **İsteyen :** {message.from_user.mention}
 """
-    await m.delete()
-    await message.reply_photo(photo=write,caption=caption)
+    await yanıt_mesajı.delete()
+    await message.reply_photo(photo=yazılmış_resim, caption=altyazı)
 
-__mod_name__ = "✨WʀɪᴛᴇTᴏᴏʟ✨"
+__mod_name__ = "✨YᴀᴢTᴏᴏʟ✨"
 
-__help__ = """
+__yardım__ = """
 
- ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ ᴏɴ ᴡʜɪᴛᴇ ᴘᴀɢᴇ ᴡɪᴛʜ ᴀ ᴘᴇɴ 🖊
+ Verilen metni bir kalemle beyaz bir sayfaya yazar 🖊
 
-❍ /write <ᴛᴇxᴛ> *:* ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ.
+❍ /yaz <metin> *:* Verilen metni yazar.
  """
