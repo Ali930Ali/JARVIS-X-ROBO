@@ -14,12 +14,12 @@ gbanned = db.gban
 
 
 def register(**args):
-    """Registers a new message."""
+    """Yeni bir mesaj kaydeder."""
     pattern = args.get("pattern", None)
 
     r_pattern = r"^[/!.]"
 
-    if pattern is not None and not pattern.startswith("(?i)"):
+    eğer pattern is not None ve pattern "(?i)" ile başlamıyorsa:
         args["pattern"] = "(?i)" + pattern
 
     args["pattern"] = pattern.replace("^/", r_pattern, 1)
@@ -32,7 +32,7 @@ def register(**args):
 
 
 def chataction(**args):
-    """Registers chat actions."""
+    """Sohbet eylemlerini kaydeder."""
 
     def decorator(func):
         telethn.add_event_handler(func, events.ChatAction(**args))
@@ -42,7 +42,7 @@ def chataction(**args):
 
 
 def userupdate(**args):
-    """Registers user updates."""
+    """Kullanıcı güncellemelerini kaydeder."""
 
     def decorator(func):
         telethn.add_event_handler(func, events.UserUpdate(**args))
@@ -52,10 +52,10 @@ def userupdate(**args):
 
 
 def inlinequery(**args):
-    """Registers inline query."""
+    """Satır içi sorgu kaydeder."""
     pattern = args.get("pattern", None)
 
-    if pattern is not None and not pattern.startswith("(?i)"):
+    eğer pattern is not None ve pattern "(?i)" ile başlamıyorsa:
         args["pattern"] = "(?i)" + pattern
 
     def decorator(func):
@@ -66,7 +66,7 @@ def inlinequery(**args):
 
 
 def callbackquery(**args):
-    """Registers inline query."""
+    """Geri çağırma sorgusunu kaydeder."""
 
     def decorator(func):
         telethn.add_event_handler(func, events.CallbackQuery(**args))
@@ -80,11 +80,12 @@ def Jarvisinline(**args):
         return func
 
     return decorator
+
 def bot(**args):
     pattern = args.get("pattern")
     r_pattern = r"^[/]"
 
-    if pattern is not None and not pattern.startswith("(?i)"):
+    eğer pattern is not None ve pattern "(?i)" ile başlamıyorsa:
         args["pattern"] = "(?i)" + pattern
 
     args["pattern"] = pattern.replace("^/", r_pattern, 1)
@@ -94,7 +95,7 @@ def bot(**args):
     file_test = file_test.stem.replace(".py", "")
     reg = re.compile("(.*)")
 
-    if pattern is not None:
+    eğer pattern is not None:
         try:
             cmd = re.search(reg, pattern)
             try:
@@ -111,25 +112,25 @@ def bot(**args):
 
     def decorator(func):
         async def wrapper(check):
-            if check.edit_date:
+            eğer check.edit_date:
                 return
-            if check.fwd_from:
+            eğer check.fwd_from:
                 return
-            if check.is_group or check.is_private:
+            eğer check.is_group veya check.is_private:
                 pass
             else:
-                print("i don't work in channels")
+                print("kanallarda çalışmıyorum")
                 return
-            if check.is_group:
-                if check.chat.megagroup:
+            eğer check.is_group:
+                eğer check.chat.megagroup:
                     pass
                 else:
-                    print("i don't work in small chats")
+                    print("küçük sohbetlerde çalışmıyorum")
                     return
 
             users = gbanned.find({})
             for c in users:
-                if check.sender_id == c["user"]:
+                eğer check.sender_id == c["user"]:
                     return
             try:
                 await func(check)
@@ -156,24 +157,25 @@ def JarvisRobo(**args):
     args.get("group_only", False)
     args.get("disable_errors", False)
     args.get("insecure", False)
-    if pattern is not None and not pattern.startswith("(?i)"):
+    eğer pattern is not None ve pattern "(?i)" ile başlamıyorsa:
         args["pattern"] = "(?i)" + pattern
 
-    if "disable_edited" in args:
+    eğer "disable_edited" args içinde ise:
         del args["disable_edited"]
 
-    if "ignore_unsafe" in args:
+    eğer "ignore_unsafe" args içinde ise:
         del args["ignore_unsafe"]
 
-    if "group_only" in args:
+    eğer "group_only" args içinde ise:
         del args["group_only"]
 
-    if "disable_errors" in args:
+    eğer "disable_errors" args içinde ise:
         del args["disable_errors"]
 
-    if "insecure" in args:
+    eğer "insecure" args içinde ise:
         del args["insecure"]
 
-    if pattern:
-        if not ignore_unsafe:
+    eğer pattern varsa:
+        eğer ignore_unsafe değilse:
             args["pattern"] = args["pattern"].replace("^.", unsafe_pattern, 1)
+    
