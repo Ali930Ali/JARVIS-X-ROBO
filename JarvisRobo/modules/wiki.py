@@ -13,16 +13,16 @@ def wiki(update: Update, context: CallbackContext):
         if update.effective_message.reply_to_message
         else update.effective_message
     )
-    res = ""
+    sonuç = ""
     if msg == update.effective_message:
-        search = msg.text.split(" ", maxsplit=1)[1]
+        arama = msg.text.split(" ", maxsplit=1)[1]
     else:
-        search = msg.text
+        arama = msg.text
     try:
-        res = wikipedia.summary(search)
+        sonuç = wikipedia.summary(arama)
     except DisambiguationError as e:
         update.message.reply_text(
-            "Disambiguated pages found! Adjust your query accordingly.\n<i>{}</i>".format(
+            "Belirsiz sayfalar bulundu! Sorgunuzu buna göre ayarlayın.\n<i>{}</i>".format(
                 e
             ),
             parse_mode=ParseMode.HTML,
@@ -31,14 +31,14 @@ def wiki(update: Update, context: CallbackContext):
         update.message.reply_text(
             "<code>{}</code>".format(e), parse_mode=ParseMode.HTML
         )
-    if res:
-        result = f"<b>{search}</b>\n\n"
-        result += f"<i>{res}</i>\n"
-        result += f"""<a href="https://en.wikipedia.org/wiki/{search.replace(" ", "%20")}">Read more...</a>"""
+    if sonuç:
+        result = f"<b>{arama}</b>\n\n"
+        result += f"<i>{sonuç}</i>\n"
+        result += f"""<a href="https://tr.wikipedia.org/wiki/{arama.replace(" ", "%20")}">Daha fazlasını oku...</a>"""
         if len(result) > 4000:
-            with open("result.txt", "w") as f:
-                f.write(f"{result}\n\nUwU OwO OmO UmU")
-            with open("result.txt", "rb") as f:
+            with open("sonuç.txt", "w") as f:
+                f.write(f"{sonuç}\n\nUwU OwO OmO UmU")
+            with open("sonuç.txt", "rb") as f:
                 context.bot.send_document(
                     document=f,
                     filename=f.name,
@@ -56,6 +56,6 @@ WIKI_HANDLER = DisableAbleCommandHandler("wiki", wiki, run_async=True)
 dispatcher.add_handler(WIKI_HANDLER)
 
 __help__ = """
-» /wiki (text) *:* sᴇᴀʀᴄʜs ᴀʙᴏᴜᴛ ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ ᴏɴ ᴡɪᴋɪᴘᴇᴅɪᴀ.
+» /wiki (metin) *:* Verilen metin hakkında Wikipedia'da arama yapar.
 """
 __mod_name__ = "✨Wɪᴋɪ✨"
