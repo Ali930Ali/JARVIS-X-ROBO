@@ -9,30 +9,30 @@ from JarvisRobo import pbot as app
 from JarvisRobo.utils.post import post
 
 
-async def take_screenshot(url: str, full: bool = False):
+async def ekran_görüntüsü_al(url: str, tam: bool = False):
     url = "https://" + url if not url.startswith("http") else url
-    payload = {
+    veri = {
         "url": url,
-        "width": 1920,
-        "height": 1080,
-        "scale": 1,
-        "format": "jpeg",
+        "genişlik": 1920,
+        "yükseklik": 1080,
+        "ölçek": 1,
+        "biçim": "jpeg",
     }
-    if full:
-        payload["full"] = True
-    data = await post(
+    if tam:
+        veri["tam"] = True
+    veri = await post(
         "https://webscreenshot.vercel.app/api",
-        data=payload,
+        veri=veri,
     )
-    if "image" not in data:
+    if "resim" not in veri:
         return None
-    b = data["image"].replace("data:image/jpeg;base64,", "")
-    file = BytesIO(b64decode(b))
-    file.name = "webss.jpg"
-    return file
+    b = veri["resim"].replace("data:image/jpeg;base64,", "")
+    dosya = BytesIO(b64decode(b))
+    dosya.name = "webss.jpg"
+    return dosya
 
 
-async def eor(msg: Message, **kwargs):
+async def cevap_veya_mesaj(msg: Message, **kwargs):
     func = (
         (msg.edit_text if msg.from_user.is_self else msg.reply)
         if msg.from_user
@@ -43,43 +43,44 @@ async def eor(msg: Message, **kwargs):
 
 
 @app.on_message(filters.command(["webss", "ss", "webshot"]))
-async def take_ss(_, message: Message):
-    if len(message.command) < 2:
-        return await eor(message, text="ɢɪᴠᴇ ᴀ ᴜʀʟ ᴛᴏ ғᴇᴛᴄʜ sᴄʀᴇᴇɴsʜᴏᴛ.")
+async def ekran_görüntüsü_al_komutu(_, mesaj: Message):
+    if len(mesaj.command) < 2:
+        return await cevap_veya_mesaj(mesaj, text="Ekran görüntüsü almak için bir URL verin.")
 
-    if len(message.command) == 2:
-        url = message.text.split(None, 1)[1]
-        full = False
-    elif len(message.command) == 3:
-        url = message.text.split(None, 2)[1]
-        full = message.text.split(None, 2)[2].lower().strip() in [
-            "yes",
-            "y",
+    if len(mesaj.command) == 2:
+        url = mesaj.text.split(None, 1)[1]
+        tam = False
+    elif len(mesaj.command) == 3:
+        url = mesaj.text.split(None, 2)[1]
+        tam = mesaj.text.split(None, 2)[2].lower().strip() in [
+            "evet",
+            "e",
             "1",
-            "true",
+            "doğru",
         ]
     else:
-        return await eor(message, text="ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ.")
+        return await cevap_veya_mesaj(mesaj, text="Geçersiz komut.")
 
-    m = await eor(message, text="ᴄᴀᴘᴛᴜʀɪɴɢ sᴄʀᴇᴇɴsʜᴏᴛ...")
+    m = await cevap_veya_mesaj(mesaj, text="Ekran görüntüsü alınıyor...")
 
     try:
-        photo = await take_screenshot(url, full)
-        if not photo:
-            return await m.edit("ғᴀɪʟᴇᴅ ᴛᴏ ᴛᴀᴋᴇ sᴄʀᴇᴇɴsʜᴏᴛ.")
+        fotoğraf = await ekran_görüntüsü_al(url, tam)
+        if not fotoğraf:
+            return await m.edit("Ekran görüntüsü alınamadı.")
 
-        m = await m.edit("ᴜᴘʟᴏᴀᴅɪɴɢ...")
+        m = await m.edit("Yükleniyor...")
 
-        if not full:
-            await message.reply_document(photo)
+        if not tam:
+            await mesaj.reply_document(fotoğraf)
         else:
-            await message.reply_document(photo)
+            await mesaj.reply_document(fotoğraf)
         await m.delete()
     except Exception as e:
         await m.edit(str(e))
 
 
-__help__ = """
-» /webss *:* Sᴇɴᴅs ᴛʜᴇ sᴄʀᴇᴇɴsʜᴏᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ ᴜʀʟ.
+__yardım__ = """
+» /webss *:* Verilen URL'nin ekran görüntüsünü gönderir.
 """
-__mod_name__ = "✨Wᴇʙsʜᴏᴛ✨"
+__mod_adi__ = "✨Webshot✨"
+            
