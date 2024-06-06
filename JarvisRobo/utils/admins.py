@@ -6,15 +6,15 @@ from pyrogram.types import Message
 from JarvisRobo import DEV_USERS, DRAGONS, pbot
 
 
-def can_change_info(func: Callable) -> Callable:
-    async def non_admin(_, message: Message):
+def bilgi_degistirebilir(func: Callable) -> Callable:
+    async def admin_degil(_, message: Message):
         if message.from_user.id in DRAGONS:
             return await func(_, message)
 
-        check = await pbot.get_chat_member(message.chat.id, message.from_user.id)
-        if check.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
+        kontrol = await pbot.get_chat_member(message.chat.id, message.from_user.id)
+        if kontrol.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
             return await message.reply_text(
-                "» ʏᴏᴜ'ʀᴇ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ʙᴀʙʏ, ᴘʟᴇᴀsᴇ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs."
+                "» Siz bir admin değilsiniz, lütfen sınırlarınızda kalın."
             )
 
         admin = (
@@ -24,21 +24,21 @@ def can_change_info(func: Callable) -> Callable:
             return await func(_, message)
         else:
             return await message.reply_text(
-                "`You don't have permissions to change group info."
+                "`Grup bilgisini değiştirme izniniz yok."
             )
 
-    return non_admin
+    return admin_degil
 
 
-def can_restrict(func: Callable) -> Callable:
-    async def non_admin(_, message: Message):
+def kisitlayabilir(func: Callable) -> Callable:
+    async def admin_degil(_, message: Message):
         if message.from_user.id in DEV_USERS:
             return await func(_, message)
 
-        check = await pbot.get_chat_member(message.chat.id, message.from_user.id)
-        if check.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
+        kontrol = await pbot.get_chat_member(message.chat.id, message.from_user.id)
+        if kontrol.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
             return await message.reply_text(
-                "» ʏᴏᴜ'ʀᴇ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ʙᴀʙʏ, ᴘʟᴇᴀsᴇ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs."
+                "» Siz bir admin değilsiniz, lütfen sınırlarınızda kalın."
             )
 
         admin = (
@@ -48,20 +48,20 @@ def can_restrict(func: Callable) -> Callable:
             return await func(_, message)
         else:
             return await message.reply_text(
-                "`You don't have permissions to restrict users in this chat."
+                "`Bu sohbette kullanıcıları kısıtlama izniniz yok."
             )
 
-    return non_admin
+    return admin_degil
 
-def can_promote(func: Callable) -> Callable:
-    async def non_admin(_, message: Message):
+def terfi_edebilir(func: Callable) -> Callable:
+    async def admin_degil(_, message: Message):
         if message.from_user.id in DEV_USERS:
             return await func(_, message)
 
-        check = await pbot.get_chat_member(message.chat.id, message.from_user.id)
-        if check.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
+        kontrol = await pbot.get_chat_member(message.chat.id, message.from_user.id)
+        if kontrol.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:
             return await message.reply_text(
-                "» ʏᴏᴜ'ʀᴇ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ʙᴀʙʏ, ᴘʟᴇᴀsᴇ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs."
+                "» Siz bir admin değilsiniz, lütfen sınırlarınızda kalın."
             )
 
         admin = (
@@ -71,7 +71,8 @@ def can_promote(func: Callable) -> Callable:
             return await func(_, message)
         else:
             return await message.reply_text(
-                "`You don't have permissions to promote|demote  users in this chat."
+                "`Bu sohbette kullanıcıları terfi ettirme/düşürme izniniz yok."
             )
 
-    return non_admin
+    return admin_degil
+            
