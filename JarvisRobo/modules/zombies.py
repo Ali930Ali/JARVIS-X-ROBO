@@ -7,9 +7,9 @@ from telethon.tl.types import ChannelParticipantsAdmins, ChatBannedRights
 
 from JarvisRobo import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, telethn
 
-# =================== CONSTANT ===================
+# =================== SABİT ===================
 
-BANNED_RIGHTS = ChatBannedRights(
+YASAKLANMIŞ_HAKLAR = ChatBannedRights(
     until_date=None,
     view_messages=True,
     send_messages=True,
@@ -22,7 +22,7 @@ BANNED_RIGHTS = ChatBannedRights(
 )
 
 
-UNBAN_RIGHTS = ChatBannedRights(
+YASAKSIZ_HAKLAR = ChatBannedRights(
     until_date=None,
     send_messages=None,
     send_media=None,
@@ -34,75 +34,76 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 
 
-OFFICERS = [OWNER_ID] + DEV_USERS + DRAGONS + DEMONS 
+YÖNETİCİLER = [OWNER_ID] + DEV_USERS + DRAGONS + DEMONS 
 
-# Check if user has admin rights
+# Kullanıcının admin haklarına sahip olup olmadığını kontrol edin
 
 
-async def is_administrator(user_id: int, message):
-    admin = False
+async def yönetici_mi(user_id: int, message):
+    yönetici = False
     async for user in telethn.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
-        if user_id == user.id or user_id in OFFICERS:
-            admin = True
+        if user_id == user.id or user_id in YÖNETİCİLER:
+            yönetici = True
             break
-    return admin
+    return yönetici
 
 
 @telethn.on(events.NewMessage(pattern="^[!/]zombies ?(.*)"))
-async def rm_deletedacc(show):
+async def sil_silinmis(show):
     con = show.pattern_match.group(1).lower()
-    del_u = 0
-    del_status = "**Group clean, 0 deleted accounts found.**"
+    sil_u = 0
+    sil_durumu = "**Grup temiz, 0 silinmiş hesap bulundu.**"
     if con != "clean":
-        kontol = await show.reply("`Searching for deleted account to fu*k...`")
+        kontol = await show.reply("`Silinecek hesaplar aranıyor...`")
         async for user in show.client.iter_participants(show.chat_id):
             if user.deleted:
-                del_u += 1
+                sil_u += 1
                 await sleep(1)
-        if del_u > 0:
-            del_status = (
-                f"**Searching...** `{del_u}` **Deleted account/Zombie On this group,"
-                "\nClean it with command** `/zombies clean`"
+        if sil_u > 0:
+            sil_durumu = (
+                f"**Aranıyor...** `{sil_u}` **Silinmiş hesap/Zombi Bu grupta,"
+                "\nKomutla temizle** `/zombies clean`"
             )
-        return await kontol.edit(del_status)
+        return await kontol.edit(sil_durumu)
     chat = await show.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
-        return await show.reply("**Sorry you're not admin!**")
-    memek = await show.reply("`Fu*king deleted accounts...`")
-    del_u = 0
-    del_a = 0
+        return await show.reply("**Üzgünüm, yönetici değilsiniz!**")
+    memek = await show.reply("`Silinecek silinmiş hesaplar temizleniyor...`")
+    sil_u = 0
+    sil_a = 0
     async for user in telethn.iter_participants(show.chat_id):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
+                    EditBannedRequest(show.chat_id, user.id, YASAKLANMIŞ_HAKLAR)
                 )
             except ChatAdminRequiredError:
-                return await show.edit("`Not have a banned rights on this group`")
+                return await show.edit("`Bu grupta yasaklanmış haklara sahip değil`")
             except UserAdminInvalidError:
-                del_u -= 1
-                del_a += 1
-            await telethn(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
-            del_u += 1
-    if del_u > 0:
-        del_status = f"**Cleaned** `{del_u}` **Zombies**"
-    if del_a > 0:
-        del_status = (
-            f"**Cleaned** `{del_u}` **Zombies** "
-            f"\n`{del_a}` **Admin zombies not deleted.**"
+                sil_u -= 1
+                sil_a += 1
+            await telethn(EditBannedRequest(show.chat_id, user.id, YASAKSIZ_HAKLAR))
+            sil_u += 1
+    if sil_u > 0:
+        sil_durumu = f"**Temizlendi** `{sil_u}` **Zombi**"
+    if sil_a > 0:
+        sil_durumu = (
+            f"**Temizlendi** `{sil_u}` **Zombi** "
+            f"\n`{sil_a}` **Yönetici zombiler silinmedi.**"
         )
-    await memek.edit(del_status)
+    await memek.edit(sil_durumu)
 
 
-__help__ = """
-*ʀᴇᴍᴏᴠᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛs*
- ❍ /zombies *:* sᴛᴀʀᴛs sᴇᴀʀᴄʜɪɴɢ ғᴏʀ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛs ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ.
- ❍ /zombies clean *:* ʀᴇᴍᴏᴠᴇs ᴛʜᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛs ғʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ.
+__yardım__ = """
+*Silinmiş hesapları kaldırma*
+ ❍ /zombies *:* Grubunuzda silinmiş hesapları aramaya başlar.
+ ❍ /zombies clean *:* Grubunuzdaki silinmiş hesapları temizler.
 """
 
 
-__mod_name__ = "✨Zᴏᴍʙɪᴇ✨"
+__mod_adı__ = "✨Zombi✨"
+            
