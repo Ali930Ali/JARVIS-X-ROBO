@@ -14,9 +14,7 @@ import requests
 from JarvisRobo import pbot
 
 
-
-
-async def download_instagram_reels(url: str) -> str:
+async def instagram_reels_indir(url: str) -> str:
     try:
         response = requests.post(f"https://api.qewertyy.dev/download/instagram?url={url}")
         
@@ -26,40 +24,40 @@ async def download_instagram_reels(url: str) -> str:
                 video_url = data["content"][0]["url"]
                 return video_url
             else:
-                return "No content found in the response."
+                return "Yanıtta içerik bulunamadı."
         else:
-            return f"Request failed with status code: {response.status_code}"
+            return f"İstek durum koduyla başarısız oldu: {response.status_code}"
     except Exception as e:
-        return f"Something went wrong: {e}"
+        return f"Bir şeyler ters gitti: {e}"
 
 
-# Command to download an Instagram Reels video
+# Instagram Reels videosunu indirmek için komut
 @pbot.on_message(filters.command("insta"))
-async def download_instagram_reels_command(client, message):
+async def instagram_reels_indir_komut(client, message):
     try:
         if len(message.text.split(" ")) == 1:
-            await message.reply_text("Please provide an Instagram Reels link after the command.")
+            await message.reply_text("Lütfen komuttan sonra bir Instagram Reels bağlantısı girin.")
             return
         
         url = message.text.split(" ", 1)[1]
-        video_url = await download_instagram_reels(url)
+        video_url = await instagram_reels_indir(url)
         
         if video_url.startswith("http"):
             await message.reply_video(video_url)
         else:
             await message.reply_text(video_url)
     except Exception as e:
-        await message.reply_text(f"Something went wrong: {e}")
+        await message.reply_text(f"Bir şeyler ters gitti: {e}")
 
 
-def get_file_extension_from_url(url):
+def url_den_dosya_uzantısı_al(url):
     url_path = urlparse(url).path
     basename = os.path.basename(url_path)
     return basename.split(".")[-1]
 
 
-def get_text(message: Message) -> [None, str]:
-    """Extract Text From Commands"""
+def mesajdan_metin_al(message: Message) -> [None, str]:
+    """Komutlardan Metin Çıkar"""
     text_to_return = message.text
     if message.text is None:
         return None
@@ -73,17 +71,17 @@ def get_text(message: Message) -> [None, str]:
 
 
 @pbot.on_message(filters.command(["vsong", "video"]))
-async def ytmusic(client, message: Message):
-    urlissed = get_text(message)
+async def youtube_müzik(client, message: Message):
+    urlissed = mesajdan_metin_al(message)
     await message.delete()
     user_id = message.from_user.id
     user_name = message.from_user.first_name
     chutiya = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
 
-    pablo = await client.send_message(message.chat.id, f"sᴇᴀʀᴄʜɪɴɢ, ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ...")
+    pablo = await client.send_message(message.chat.id, f"Aranıyor, lütfen bekleyin...")
     if not urlissed:
         await pablo.edit(
-            "😴 sᴏɴɢ ɴᴏᴛ ғᴏᴜɴᴅ ᴏɴ ʏᴏᴜᴛᴜʙᴇ.\n\n» ᴍᴀʏʙᴇ ᴛᴜɴᴇ ɢᴀʟᴛɪ ʟɪᴋʜᴀ ʜᴏ, ᴩᴀᴅʜᴀɪ - ʟɪᴋʜᴀɪ ᴛᴏʜ ᴋᴀʀᴛᴀ ɴᴀʜɪ ᴛᴜ !"
+            "😴 Şarkı YouTube'da bulunamadı.\n\n» Belki de yanlış yazdın, eğitim almak - yazmak lazım!"
         )
         return
 
@@ -117,11 +115,11 @@ async def ytmusic(client, message: Message):
             ytdl_data = ytdl.extract_info(url, download=True)
 
     except Exception as e:
-        await pablo.edit(f"**ғᴀɪʟᴇᴅ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ.** \n**ᴇʀʀᴏʀ :** `{str(e)}`")
+        await pablo.edit(f"**İndirme başarısız oldu.** \n**Hata :** `{str(e)}`")
         return
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"❄ **ᴛɪᴛʟᴇ :** [{thum}]({mo})\n💫 **ᴄʜᴀɴɴᴇʟ :** {thums}\n✨ **sᴇᴀʀᴄʜᴇᴅ :** {urlissed}\n🥀 **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :** {chutiya}"
+    capy = f"❄ **Başlık :** [{thum}]({mo})\n💫 **Kanal :** {thums}\n✨ **Aranan :** {urlissed}\n🥀 **Talep Eden :** {chutiya}"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -133,7 +131,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"» ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ...\n\nᴜᴩʟᴏᴀᴅɪɴɢ `{urlissed}` ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ sᴇʀᴠᴇʀs...💫",
+            f"» Lütfen bekleyin...\n\nYouTube sunucularından `{urlissed}` yükleniyor...💫",
             file_stark,
         ),
     )
@@ -142,9 +140,7 @@ async def ytmusic(client, message: Message):
         if files and os.path.exists(files):
             os.remove(files)
 
-# __mod_name__ = "✨Vɪᴅᴇᴏ✨"
+# __mod_name__ = "✨Video✨"
 # __help__ = """ 
-# /video to download video
+# /video ile video indir
 #  """
-
-
