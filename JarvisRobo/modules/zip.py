@@ -15,7 +15,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-async def is_register_admin(chat, user):
+async def kayıtlı_admin_mi(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
@@ -43,16 +43,16 @@ async def _(event):
         return
 
     if not event.is_reply:
-        await event.reply("Reply to a file to compress it.")
+        await event.reply("Sıkıştırmak için bir dosyaya yanıt verin.")
         return
     if event.is_group:
-        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
+        if not (await kayıtlı_admin_mi(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "Hey, you are not admin. You can't use this command, But you can use in my PM 🙂"
+                "Hey, siz yönetici değilsiniz. Bu komutu kullanamazsınız, ama özel mesajımda kullanabilirsiniz 🙂"
             )
             return
 
-    mone = await event.reply("⏳️ Please wait...")
+    mone = await event.reply("⏳️ Lütfen bekleyin...")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -77,8 +77,7 @@ async def _(event):
     )
 
 
-def zipdir(path, ziph):
-    # ziph is zipfile handle
+def klasörü_sıkıştır(path, ziph):
     for root, dirs, files in os.walk(path):
         for file in files:
             ziph.write(os.path.join(root, file))
@@ -87,13 +86,13 @@ def zipdir(path, ziph):
 
 
 
-extracted = TEMP_DOWNLOAD_DIRECTORY + "extracted/"
+extracted = TEMP_DOWNLOAD_DIRECTORY + "çıkarılmış/"
 thumb_image_path = TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
 
-async def is_register_admin(chat, user):
+async def kayıtlı_admin_mi(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
@@ -121,16 +120,16 @@ async def _(event):
         return
 
     if not event.is_reply:
-        await event.reply("Reply to a zip file.")
+        await event.reply("Bir zip dosyasına yanıt verin.")
         return
     if event.is_group:
-        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
+        if not (await kayıtlı_admin_mi(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "Hey, You are not admin. You can't use this command, But you can use in my PM 🙂"
+                "Hey, siz yönetici değilsiniz. Bu komutu kullanamazsınız, ama özel mesajımda kullanabilirsiniz 🙂"
             )
             return
 
-    mone = await event.reply("Processing...")
+    mone = await event.reply("İşleniyor...")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -150,7 +149,7 @@ async def _(event):
         with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:
             zip_ref.extractall(extracted)
         filename = sorted(get_lst_of_files(extracted, []))
-        await event.reply("Unzipping now 😌")
+        await event.reply("Şimdi açılıyor 😌")
         for single_file in filename:
             if os.path.exists(single_file):
                 caption_rts = os.path.basename(single_file)
@@ -200,20 +199,21 @@ async def _(event):
         os.remove(downloaded_file_name)
 
 
-def get_lst_of_files(input_directory, output_lst):
+def dosya_listesini_al(input_directory, output_lst):
     filesinfolder = os.listdir(input_directory)
     for file_name in filesinfolder:
         current_file_name = os.path.join(input_directory, file_name)
         if os.path.isdir(current_file_name):
-            return get_lst_of_files(current_file_name, output_lst)
+            return dosya_listesini_al(current_file_name, output_lst)
         output_lst.append(current_file_name)
     return output_lst
 
 
-__help__ = """
-ʜᴇʏ ɪ ᴄᴀɴ ᴄᴏɴᴠᴇʀᴛ ғɪʟᴇs ʜᴇʀᴇ..
- ❍ /zip *:* ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ ᴛᴏ ᴄᴏᴍᴘʀᴇss ɪᴛ ɪɴ .ᴢɪᴘ ғᴏʀᴍᴀᴛ
- ❍ /unzip *:* ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ ᴛᴏ ᴅᴇᴄᴏᴍᴘʀᴇss ɪᴛ ғʀᴏᴍ ᴛʜᴇ .ᴢɪᴘ ғᴏʀᴍᴀᴛ
+__yardım__ = """
+Merhaba, burada dosyaları dönüştürebilirim.
+ ❍ /zip *:* Sıkıştırmak için bir dosyaya yanıt verin ve .zip formatına dönüştürün.
+ ❍ /unzip *:* Bir zip dosyasına yanıt verin ve onu çözün.
 """
 
-__mod_name__ = "✨Zɪᴘᴘᴇʀ✨​"
+__mod_adı__ = "✨Zıpper✨"
+    
