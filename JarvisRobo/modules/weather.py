@@ -1,45 +1,42 @@
 import io
-
 import aiohttp
 from telethon.tl import functions, types
 
 from JarvisRobo import telethn as tbot
-from JarvisRobo.events import register
+from JarvisRobo.events import kayıt
 
 
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
+async def kayıtlı_yönetici_mi(sohbet, kullanıcı):
+    if isinstance(sohbet, (types.InputPeerChannel, types.InputChannel)):
         return isinstance(
             (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
+                await tbot(functions.channels.GetParticipantRequest(sohbet, kullanıcı))
+            ).katılımcı,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
-    if isinstance(chat, types.InputPeerUser):
+    if isinstance(sohbet, types.InputPeerUser):
         return True
 
 
-@register(pattern="^/havadurumu (.*)")
-async def _(event):
-    if event.fwd_from:
+@kayıt(desen="^/havadurumu (.*)")
+async def _(etkinlik):
+    if etkinlik.fwd_from:
         return
 
-    sample_url = "https://wttr.in/{}.png"
-    # logger.info(sample_url)
-    input_str = event.pattern_match.group(1)
-    async with aiohttp.ClientSession() as session:
-        response_api_zero = await session.get(sample_url.format(input_str))
-        # logger.info(response_api_zero)
-        response_api = await response_api_zero.read()
-        with io.BytesIO(response_api) as out_file:
-            await event.reply(file=out_file)
+    örnek_url = "https://wttr.in/{}.png"
+    giriş_str = etkinlik.desen_eşleme.grup(1)
+    async with aiohttp.ClientSession() as oturum:
+        yanıt_api_sıfır = await oturum.get(örnek_url.format(giriş_str))
+        yanıt_api = await yanıt_api_sıfır.read()
+        with io.BytesIO(yanıt_api) as çıkış_dosya:
+            await etkinlik.reply(dosya=çıkış_dosya)
 
 
-__help__ = """
-ɪ ᴄᴀɴ ғɪɴᴅ ᴡᴇᴀᴛʜᴇʀ ᴏғ ᴀʟʟ ᴄɪᴛɪᴇs
+__yardım__ = """
+Ben tüm şehirlerin hava durumu bilgilerini bulabilirim.
 
- ❍ /weather <ᴄɪᴛʏ>*:* ᴀᴅᴠᴀɴᴄᴇᴅ ᴡᴇᴀᴛʜᴇʀ ᴍᴏᴅᴜʟᴇ, ᴜsᴀɢᴇ sᴀᴍᴇ ᴀs /ᴡᴇᴀᴛʜᴇʀ
- ❍ /weather  ᴍᴏᴏɴ*:* ɢᴇᴛ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛᴜs ᴏғ ᴍᴏᴏɴ
+ ❍ /havadurumu <şehir>*:* Gelişmiş hava durumu modülü, kullanımı /weather ile aynıdır.
+ ❍ /havadurumu  ay*:* Ay'ın güncel durumunu alır
 """
 
-__mod_name__ = "✨hava durumu ✨"
+__mod_adi__ = "✨Hava Durumu✨"
