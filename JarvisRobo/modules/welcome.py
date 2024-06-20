@@ -109,20 +109,20 @@ def send(update, message, keyboard, backup_message):
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
-        elif excp.message == "Unsupported url protocol":
+        elif excp.message == "Desteklenmeyen URL protokolü":
             msg = update.effective_message.reply_text(
                 markdown_parser(
-                    backup_message + "\nNote: the current message has buttons which "
-                    "use url protocols that are unsupported by "
-                    "telegram. Please update."
+                    backup_message + "\nNot: mevcut mesajda butonlar bulunmaktadır. "
+                    "tarafından desteklenmeyen URL protokollerini kullanın "
+                    "telgraf.  Lütfen güncelle."
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
-        elif excp.message == "Wrong url host":
+        elif excp.message == "Yanlış URL ana bilgisayarı":
             msg = update.effective_message.reply_text(
                 markdown_parser(
-                    backup_message + "\nNote: the current message has some bad urls. "
+                    backup_message + "\nNot: Mevcut mesajın bazı hatalı URL'leri var. "
                     "Please update."
                 ),
                 parse_mode=ParseMode.MARKDOWN,
@@ -130,14 +130,14 @@ def send(update, message, keyboard, backup_message):
             )
             LOGGER.warning(message)
             LOGGER.warning(keyboard)
-            LOGGER.exception("Could not parse! got invalid url host errors")
-        elif excp.message == "Have no rights to send a message":
+            LOGGER.exception("Ayrıştırılamadı!  geçersiz URL ana bilgisayar hataları aldım")
+        elif excp.message == "Mesaj gönderme hakkım yok":
             return
         else:
             msg = update.effective_message.reply_text(
                 markdown_parser(
-                    backup_message + "\nNote: An error occured when sending the "
-                    "custom message. Please update."
+                    backup_message + "\nNot: Gönderim sırasında bir hata oluştu. "
+                    "özel mesaj.  Lütfen güncelle."
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
@@ -183,19 +183,19 @@ def new_member(update: Update, context: CallbackContext):
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "ᴏʜ ɢᴇɴᴏs? ʟᴇᴛs ɢᴇᴛ ᴛʜɪs ᴍᴏᴠɪɴɢ.", reply_to_message_id=reply
+                    "oh genos hadi harekete geçelim oh genos hadi başlayalım.", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#ᴜsᴇʀ_ᴊᴏɪɴᴇᴅ\n"
-                    f"Bᴏᴛ Oᴡɴᴇʀ Jᴜsᴛ Jᴏɪɴᴇᴅ ᴛʜᴇ ɢʀᴏᴜᴘ"
+                    f"bot sahibi gruba yeni katıldı"
                 )
                 continue
 
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "Bᴇ ᴄᴏᴏʟ! A ᴍᴇᴍʙᴇʀ ᴏғ ᴛʜᴇ Hᴇʀᴏᴇs Assᴏᴄɪᴀᴛɪᴏɴ Jᴜsᴛ Jᴏɪɴᴇᴅ.",
+                    "Rahat ol!  Kahramanlar Derneği'nin bir üyesi az önce katıldı, sakin ol!.",
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
@@ -208,7 +208,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
-                    "Wʜᴏᴀ! A Dʀᴀɢᴏɴ ᴅɪsᴀsᴛᴇʀ Jᴜsᴛ Jᴏɪɴᴇᴅ! Sᴛᴀʏ Aʟᴇʀᴛ!",
+                    "Vay!  Bir Ejderha Felaketi Stay Alert'e Yeni Katıldı!",
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
@@ -221,37 +221,37 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Support
             elif new_mem.id in DEMONS:
                 update.effective_message.reply_text(
-                    "Huh! Someone with a Demon disaster level just joined!",
+                    "Ha!  Demon felaket seviyesine sahip biri yeni katıldı!",
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
-                    f"Bot Support just joined the group"
+                    f"Bot Desteği gruba yeni katıldı"
                 )
                 continue
 
             # Welcome Whitelisted
             elif new_mem.id in TIGERS:
                 update.effective_message.reply_text(
-                    "Roar! A Tiger disaster just joined!", reply_to_message_id=reply
+                    "Kükreme!  Bir Tiger felaketi yeni katıldı!", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
-                    f"A whitelisted user joined the chat"
+                    f"Beyaz listeye eklenen bir kullanıcı sohbete katıldı"
                 )
                 continue
 
             # Welcome Tigers
             elif new_mem.id in WOLVES:
                 update.effective_message.reply_text(
-                    "Awoo! A Wolf disaster just joined!", reply_to_message_id=reply
+                    "Ah!  Bir Kurt felaketi yeni katıldı!", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
-                    f"A whitelisted user joined the chat"
+                    f"Beyaz listeye eklenen bir kullanıcı sohbete katıldı"
                 )
                 continue
 
@@ -260,7 +260,7 @@ def new_member(update: Update, context: CallbackContext):
                 if not JarvisRobo.ALLOW_CHATS:
                     with suppress(BadRequest):
                         update.effective_message.reply_text(
-                            f"ɢʀᴏᴜᴘ ᴀʀᴇ ᴅɪsᴀʙʟᴇᴅ ғᴏʀ {bot.first_name}, ɪ'ᴍ ʙᴜsʏ."
+                            f"Grup şu nedenle devre dışı bırakıldı: {bot.first_name}, Meşgulüm."
                         )
                     bot.leave_chat(update.effective_chat.id)
                     return
