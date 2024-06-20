@@ -190,7 +190,7 @@ def log_user(update: Update, context: CallbackContext):
 @sudo_plus
 def chats(update: Update, context: CallbackContext):
     all_chats = user_db.get_all_chats() or []
-    chatfile = "  Chat ID | Chat Member"
+    chatfile = "Sohbet listesi.\n0.  Sohbet Adı Sohbet Kimliği |  Sohbet Üyesi"
     P = 1
     for chat in all_chats:
         try:
