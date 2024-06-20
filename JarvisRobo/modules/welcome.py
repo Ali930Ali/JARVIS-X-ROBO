@@ -93,7 +93,7 @@ def send(update, message, keyboard, backup_message):
             reply_to_message_id=reply,
         )
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Yanıt mesajı bulunamadı":
             msg = update.effective_message.reply_text(
                 message,
                 parse_mode=ParseMode.MARKDOWN,
@@ -103,8 +103,8 @@ def send(update, message, keyboard, backup_message):
         elif excp.message == "Button_url_invalid":
             msg = update.effective_message.reply_text(
                 markdown_parser(
-                    backup_message + "\nNote: the current message has an invalid url "
-                    "in one of its buttons. Please update."
+                    backup_message + "\nNote: mevcut mesajın geçersiz bir URL'si var "
+                    "düğmelerinden birinde. Lütfen güncelleyin."
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
