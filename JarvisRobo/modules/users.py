@@ -61,7 +61,7 @@ async def broadcast_handler(bot: Client, m: Message):
     all_chats = user_db.get_all_chats() or []
     await bot.send_message(
         OWNER_ID,
-        f"{m.from_user.mention} or {m.from_user.id} Iꜱ ꜱᴛᴀʀᴛᴇᴅ ᴛʜᴇ Bʀᴏᴀᴅᴄᴀꜱᴛ......",
+        f"{m.from_user.mention} or {m.from_user.id} yayına başlandı......",
     )
     broadcast_msg = m.reply_to_message
     sts_msg = await m.reply_text(f"broadcasting ..")
@@ -118,10 +118,10 @@ async def broadcast_handler(bot: Client, m: Message):
     all_users = get_all_users()
     await bot.send_message(
         OWNER_ID,
-        f"{m.from_user.mention} or {m.from_user.id} Iꜱ ꜱᴛᴀʀᴛᴇᴅ ᴛʜᴇ Bʀᴏᴀᴅᴄᴀꜱᴛ......",
+        f"{m.from_user.mention} or {m.from_user.id} yayına başladı......",
     )
     broadcast_msg = m.reply_to_message
-    sts_msg = await m.reply_text(f"broadcasting ..")
+    sts_msg = await m.reply_text(f"yayın..")
     done = 0
     failed = 0
     success = 0
@@ -138,11 +138,11 @@ async def broadcast_handler(bot: Client, m: Message):
         done += 1
         if not done % 20:
             await sts_msg.edit(
-                f"Bʀᴏᴀᴅᴄᴀꜱᴛ Iɴ Pʀᴏɢʀᴇꜱꜱ: \nTᴏᴛᴀʟ Uꜱᴇʀꜱ {total_users} \nCᴏᴍᴩʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇꜱꜱ: {success}\nFᴀɪʟᴇᴅ: {failed}"
+                f"yayın devam ediyor: \nToplam Kullanıcı Sayısı {total_users} \ntamamlanmış: {done} / {total_users}\nBaşarılı: {success}\nArızalı: {failed}"
             )
     completed_in = datetime.timedelta(seconds=int(time.time() - start_time))
     await sts_msg.edit(
-        f"Bʀᴏᴀᴅᴄᴀꜱᴛ Cᴏᴍᴩʟᴇᴛᴇᴅ: \nCᴏᴍᴩʟᴇᴛᴇᴅ Iɴ {completed_in}.\n\nTᴏᴛᴀʟ Uꜱᴇʀꜱ {total_users}\nCᴏᴍᴩʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇꜱꜱ: {success}\nFᴀɪʟᴇᴅ: {failed}"
+        f"Yayın Tamamlandı: \nTamamlanmış Iɴ {completed_in}.\n\nToplam Kullanıcı Sayısı. {total_users}\ntamamlanmış: {done} / {total_users}\nBaşarılı: {success}\nhata: {failed}"
     )
 
 
@@ -154,13 +154,13 @@ async def send_msg(user_id, message):
         await asyncio.sleep(e.value)
         return send_msg(user_id, message)
     except InputUserDeactivated:
-        logger.info(f"{user_id} : Dᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ")
+        logger.info(f"{user_id} : Devre dışı bırakıldı")
         return 400
     except UserIsBlocked:
-        logger.info(f"{user_id} : Bʟᴏᴄᴋᴇᴅ Tʜᴇ Bᴏᴛ")
+        logger.info(f"{user_id} : botu engelledi")
         return 400
     except PeerIdInvalid:
-        logger.info(f"{user_id} : Uꜱᴇʀ Iᴅ Iɴᴠᴀʟɪᴅ")
+        logger.info(f"{user_id} : Kullanıcı Kimliği Geçersiz")
         return 400
     except Exception as e:
         logger.error(f"{user_id} : {e}")
@@ -190,7 +190,7 @@ def log_user(update: Update, context: CallbackContext):
 @sudo_plus
 def chats(update: Update, context: CallbackContext):
     all_chats = user_db.get_all_chats() or []
-    chatfile = "List of chats.\n0. Chat Name  Chat ID | Chat Member"
+    chatfile = "  Chat ID | Chat Member"
     P = 1
     for chat in all_chats:
         try:
@@ -208,7 +208,7 @@ def chats(update: Update, context: CallbackContext):
         update.effective_message.reply_document(
             document=output,
             filename="groups_list.txt",
-            caption="Here be the list of groups in my database.",
+            caption=İşte veritabanımdaki grupların listesi.",
         )
 
 
